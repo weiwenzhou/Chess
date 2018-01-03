@@ -18,8 +18,8 @@ public class Board extends JFrame implements MouseListener {
     private ArrayList<Piece> blackPieces;
     public static int height = 1024;
     public static int width = 1024;
-    private static Border standard;
-    private static Border current;
-    private static Border available;
+    public static Border standard;
+    public static Border current;
+    public static Border available;
     
 }
