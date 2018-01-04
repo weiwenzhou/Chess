@@ -26,12 +26,12 @@ public class Board extends JFrame implements MouseListener {
         
     }
     
-    Board(int, int) {
+    Board(int h, int w) {
     
     }
     
     public static Piece[][] getContainer() {
-        return new Piece[][];
+        return new Piece[8][8];
     }
     
     public void mouseClicked(MouseEvent e) {
