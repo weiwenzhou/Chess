@@ -13,7 +13,7 @@ public class Board extends JFrame implements MouseListener {
     private Piece[][] tiles;
     private boolean selected;
     private Piece selectedPiece;
-    private turn int;
+    private int turn;
     private ArrayList<Piece> whitePieces;
     private ArrayList<Piece> blackPieces;
     public static int height = 1024;
@@ -22,4 +22,52 @@ public class Board extends JFrame implements MouseListener {
     public static Border current;
     public static Border available;
     
+    Board() {
+        
+    }
+    
+    Board(int, int) {
+    
+    }
+    
+    public static Piece[][] getContainer() {
+        return new Piece[][];
+    }
+    
+    public void mouseClicked(MouseEvent e) {
+        
+    }
+    
+    public void mouseEntered(MouseEvent e) {
+        
+    }
+    
+    public void mouseExited(MouseEvent e) {
+        
+    }
+    
+    public void mousePressed(MouseEvent e) {
+        
+    }
+    
+    public void mouseReleased(MouseEvent e) {
+        
+    }
+    
+    private void movePiece(Piece currentSpot, Piece newSpot) {
+        
+    }
+    
+    private Piece Promotion(int x, int y, int color) {
+        return null;
+    }
+    
+    public String toString() {
+        return "";
+    } 
+    
+    public void clearColor() {
+        
+    }
+
 }
