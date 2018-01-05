@@ -1,4 +1,4 @@
-public class Coords{//
+public class Coords{
     private int x,y;
 
     public Coords(int xcor, int ycor){
@@ -25,4 +25,4 @@ public class Coords{//
     public boolean equals(Coords other){
 	return true;
     }
-}//
+}
