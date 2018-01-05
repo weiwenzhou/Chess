@@ -25,4 +25,4 @@ public class Coords{//
     public boolean equals(Coords other){
 	return true;
     }
-}
+}//
