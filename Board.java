@@ -18,12 +18,21 @@ public class Board extends JFrame implements MouseListener {
     private ArrayList<Piece> blackPieces;
     public static int height = 1024;
     public static int width = 1024;
-    public static Border standard;
-    public static Border current;
-    public static Border available;
+    public static Border standard = new LineBorder(Color.black);
+    public static Border current = new LineBorder(Color.red, 5);
+    public static Border available = new LineBorder(Color.blue, 5);
     
     Board() {
         
+        this.setTitle("Chess");
+        this.setSize(width,height);
+        this.setLocation(100,100);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+        
+        pane = this.getContentPane();
+        
+        pane.setLayout(new GridLayout(8,8));
     }
     
     Board(int h, int w) {
