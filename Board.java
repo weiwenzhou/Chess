@@ -35,6 +35,11 @@ public class Board extends JFrame implements MouseListener {
         pane.setLayout(new GridLayout(8,8));
         
         // Piece Layout.
+        /*
+            true = white
+            false = black
+        */
+        boolean backgroundColor = false; 
         tiles = new Piece[8][8];
         for (int r = 0; r < tiles.length; r++) {
             for (int c = 0; c < tiles[r].length; c++) {
@@ -81,6 +86,30 @@ public class Board extends JFrame implements MouseListener {
                 } else {
                     token = new Piece(r, c, 2)
                 }
+                
+                tiles[r][c] = token;
+                
+                // Piece defaults
+                token.addMouseListener(this);
+                token.setBorder(standard);
+                token.setOpaque(true);
+                
+                // Background color 
+                // Alternate the colors in every row.
+                // Upper left corner is white
+                if (y == 0) { 
+                    color = !color;
+                }
+                if (color) {
+                    l.setBackground(Color.white);
+                    color = false;
+                } else {
+                    l.setBackground(Color.green);
+                    color = true;
+                }
+                
+                // Adds the token to the Container
+                pane.add(token);
             }
         }
     }
