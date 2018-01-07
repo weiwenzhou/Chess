@@ -33,6 +33,56 @@ public class Board extends JFrame implements MouseListener {
         pane = this.getContentPane();
         
         pane.setLayout(new GridLayout(8,8));
+        
+        // Piece Layout.
+        tiles = new Piece[8][8];
+        for (int r = 0; r < tiles.length; r++) {
+            for (int c = 0; c < tiles[r].length; c++) {
+                Piece token;
+                
+                // Black Pieces (Top Side) 
+                
+                if (r == 0) {
+                    if (c == 0 || c == 7) {
+                        token = new Rook(r, c, 0);
+                    }
+                    if (c == 1 || c == 6) {
+                        token = new Knight(r, c, 0);
+                    }
+                    if (c == 2 || c == 5) {
+                        token = new Bishop(r, c, 0);
+                    }
+                    if (c == 3) {
+                        token = new Queen(r, c, 0);
+                    } 
+                    if (c == 4) {
+                        token = new King(r, c, 0);
+                    }
+                } else if (r == 1) {
+                    token = new Pawn(r, c, 0);
+                } else if (r == 6) {
+                    token = new Pawn(r, c, 1);
+                } else if (r == 7) {
+                    if (c == 0 || c == 7) {
+                        token = new Rook(r, c, 1);
+                    }
+                    if (c == 1 || c == 6) {
+                        token = new Knight(r, c, 1);
+                    }
+                    if (c == 2 || c == 5) {
+                        token = new Bishop(r, c, 1);
+                    }
+                    if (c == 3) {
+                        token = new Queen(r, c, 1);
+                    } 
+                    if (c == 4) {
+                        token = new King(r, c, 1);
+                    }
+                } else {
+                    token = new Piece(r, c, 2)
+                }
+            }
+        }
     }
     
     Board(int h, int w) {
