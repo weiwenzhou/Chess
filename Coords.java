@@ -1,28 +1,28 @@
-public class Coords{//
+public class Coords{
     private int x,y;
 
     public Coords(int xcor, int ycor){
-	x = xcor;
-	y = ycor;
+        x = xcor;
+        y = ycor;
     }
 
     public int getX(){
-	return x;
+        return x;
     }
 
     public int getY(){
-	return y;
+        return y;
     }
 
     public String toString(){
-	return "";
+        return "(" + getX() + " ," + getY() ")";
     }
 
     public int toID(){
-	return 0;
+        return getX() * 8 + getY();
     }
 
     public boolean equals(Coords other){
-	return true;
+        return getX() == other.getX() && getY() == other.getY();
     }
-}//
+}
