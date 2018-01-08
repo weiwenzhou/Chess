@@ -157,5 +157,9 @@ public class Board extends JFrame implements MouseListener {
     public void clearColor() {
         
     }
-
+    
+    public static void main(String[] args) {
+        Board test = new Board();
+        test.setVisible(true);
+    }
 }
