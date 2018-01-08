@@ -40,6 +40,6 @@ public class Piece extends JLabel{
     }
     
     public String toString(){
-        
+        return "";
     }
 }
