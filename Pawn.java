@@ -13,9 +13,9 @@ public class Pawn {
         super(coor, c);
         firstMove = true;
         if (c == 0) {
-            this.setIcon(new ImageIcon("/Icons/blackPawn.png").getScaledInstance(Test.width/8,Test.height/8, Image.SCALE_SMOOTH));   
+            this.setIcon(new ImageIcon("/Icons/blackPawn.png").getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH));   
         } else {
-            this.setIcon(new ImageIcon("/Icons/whitePawn.png").getScaledInstance(Test.width/8,Test.height/8, Image.SCALE_SMOOTH));
+            this.setIcon(new ImageIcon("/Icons/whitePawn.png").getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH));
         }
     }
     
