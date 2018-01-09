@@ -40,8 +40,5 @@ public class Pawn {
         return "";
     }
     
-    private void setIcon() {
-        
-    }
 
 }
