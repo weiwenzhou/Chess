@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Pawn {
     private boolean firstMove;
     
-    Pawn(int x, int y, int c) {
+    public Pawn(int x, int y, int c) {
         Pawn(new Coords(x, y), c);
     }
     
-    Pawn (Coords coor, int c) {
+    public Pawn (Coords coor, int c) {
         super(coor, c);
         firstMove = true;
         if (c == 0) {
