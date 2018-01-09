@@ -68,14 +68,14 @@ public class Pawn extends Piece{
         int ycor = getPosition().getY();
         // if piece color is equal to opposite color --> add
         Coords tileLeft = new Coords(xcor, ycor-1);
-        Piece tileLeftPiece = Board.getPiece(tileLeft);
-        if (tileLeftPiece.getColor() != getColor() && tileLeftPiece.getColor() != 2) {
+        //Piece tileLeftPiece = Board.getPiece(tileLeft);
+        if (inBetween(tileLeft) && Board.getPiece(tileLeft).getColor() != getColor() && Board.getPiece(tileLeft).getColor() != 2) {
             validSet.add(tileLeft);
         }
         
         Coords tileRight = new Coords(xcor, ycor+1);
-        Piece tileRightPiece = Board.getPiece(tileRight);
-        if (tileRightPiece.getColor() != getColor() && tileRightPiece.getColor() != 2) {
+        //Piece tileRightPiece = Board.getPiece(tileRight);
+        if (inBetween(tileRight) && Board.getPiece(tileRight).getColor() != getColor() && Board.getPiece(tileRight).getColor() != 2) {
             validSet.add(tileRight);
         }
         return validSet;
