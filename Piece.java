@@ -25,7 +25,7 @@ public class Piece extends JLabel{
         ArrayList<Coords> validDirection = new ArrayList<Coords>();
         x += xdirection;
         y += ydirection;
-        while (inBetween(x, 0, 8) && inBetween(y,0,8)) {
+        while (inBetween(x) && inBetween(y)) {
             validDirection.add(new Coords(x,y));
             x += xdirection;
             y += ydirection;
@@ -35,8 +35,13 @@ public class Piece extends JLabel{
     }
     
     public boolean inBetween(Coords pos) {
-        return (pos.getX() >= 0 && pos.getX() < 8) && (pos.getY() >= 0 && pos.getY() < 8);
+        return inBetween(pos.getX()) && inBetween(pos.getY());
     }
+    
+    public boolean inBetween(int num) {
+        return num >= 0 && num < 8;
+    }
+    
     public Coords getPosition(){
         return position;
     }
