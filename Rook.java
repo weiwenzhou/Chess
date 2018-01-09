@@ -8,7 +8,7 @@ public class Rook extends Piece{
     public Rook(int x, int y, int c) {
         this(new Coords(x, y), c);
     }
-    
+
     public Rook(Coords coor, int c) {
         super(coor, c);
         firstMove = true;
@@ -17,10 +17,26 @@ public class Rook extends Piece{
         } else {
             this.setIcon(new ImageIcon(new ImageIcon("/Icons/whiteRook.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         }
+
+    public Rook(int x, int y, int col) {
+        super (x, y, col);
+        firstMove = true;
+    }
+    
+    public Rook(Coords coor, int col) {
+        super (coor, col);
+        firstMove = true;
     }
     
     public ArrayList<ArrayList<Coords>> getValidMoves() {
         ArrayList<ArrayList<Coords>> validSet = new ArrayList<ArrayList<Coords>>();
+        int xcor = getPosition().getX();
+        int ycor = getPosition().getY();
+        //Orthogonal
+        validSet.add(getMoves(xcor,ycor, -1, 0));
+        validSet.add(getMoves(xcor,ycor, 1, 0));
+        validSet.add(getMoves(xcor,ycor, 0, -1));
+        validSet.add(getMoves(xcor,ycor, 0, 1));
         return validSet;
     }
     
@@ -29,7 +45,4 @@ public class Rook extends Piece{
     }
     
     public String toString() {
-        return "";
     }
-    
-}
