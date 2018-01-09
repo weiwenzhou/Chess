@@ -208,12 +208,6 @@ public class Board extends JFrame implements MouseListener {
         currentPiece.setBackground(newSpotBG);
         currentPiece.setPosition(newSpotPosition);
         
-        // for pawns to not allowed to take 2 spots forward
-        if (currentPiece instanceof Pawn) {
-            Pawn currentPieceTemp = (Pawn) currentPiece;
-            currentPieceTemp.notFirst();
-        }
-        
         // swapping
         if (currentIndex < newIndex) {
             pane.add(newPiece, currentIndex);
@@ -225,6 +219,27 @@ public class Board extends JFrame implements MouseListener {
             pane.add(newPiece, currentIndex);
         }
         
+        // for pawns to not allowed to take 2 spots forward
+        // for pawns to be promoted
+        if (currentPiece instanceof Pawn) {
+            Pawn currentPieceTemp = (Pawn) currentPiece;
+            currentPieceTemp.notFirst();
+            // if in the final row. 0 = for top row, 7 for bottom row
+            if (newSpotPosition.getX() == 0 || newSpotPosition.getX() == 7) {
+                Piece promotePiece = promotion(newSpotPosition, currentPiece.getColor());
+                
+                // Match promotePiece to currentPiece
+                promotePiece.setBackground(newSpotBG);
+                promotePiece.addMouseListener(this);
+                promotePiece.setBorder(standard);
+                promotePiece.setOpaque(true);
+                
+                // Replacing currentPiece with promotePiece
+                pane.remove(currentPiece);
+                pane.add(promotePiece, newIndex);
+            }
+        }
+        
         // turn base mechanic  
         // can be swap to a boolean
         if (turn == 1) {
@@ -234,8 +249,37 @@ public class Board extends JFrame implements MouseListener {
         }
     }
     
-    private Piece Promotion(int x, int y, int color) {
-        return null;
+    private Piece promotion(Coords cor, int color) {
+        Piece promotePiece;
+        String selection;
+        int choice;
+        String referenceString = "RBKQ";
+        // JOptionPane
+        String[] options = {"Rook","Bishop","Knight","Queen"};
+        selection = (String) JOptionPane.showInputDialog(null, 
+        "Choose", 
+        "Promote",  
+        JOptionPane.QUESTION_MESSAGE, 
+        null, 
+        options, 
+        options[0]);
+        
+        try {
+            choice = referenceString.indexOf(selection.substring(0,1));
+        } catch (NullPointerException e) {
+            return promotion(cor, color);
+        }
+        if (choice == 0) {
+            return new Rook(cor, color);
+        } else if (choice == 1) {
+            return new Bishop(cor, color);
+        } else if (choice == 2) {
+            return new Knight(cor, color);
+        } else if (choice == 3) {
+            return new Queen(cor, color);
+        } else {
+           return promotion(cor, color);
+        }
     }
     
     public String toString() {
