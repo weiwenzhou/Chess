@@ -39,8 +39,4 @@ public class Queen extends Piece{
         return "";
     }
     
-    private void setIcon() {
-        
-    }
-
 }
