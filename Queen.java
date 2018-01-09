@@ -3,10 +3,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Queen extends Piece{
-    private ImageIcon[] icons;
-    private Coords position;
     
-    public Queen(int, int, int) {
+    public Queen( x, int y, int) {
         
     }
     

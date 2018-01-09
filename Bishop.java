@@ -3,8 +3,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Bishop extends Piece{
-    private ImageIcon[] icons;
-    private Coords position;
     
     public Bishop(int, int, int) {
         

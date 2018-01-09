@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 public class Rook extends Piece{
     private boolean firstMove;
-    private ImageIcon[] icons;
-    private Coords position;
     
     public Rook(int, int, int) {
         
