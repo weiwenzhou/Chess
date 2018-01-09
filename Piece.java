@@ -20,9 +20,21 @@ public class Piece extends JLabel{
     }
     
     public ArrayList<Coords> getMoves(int x, int y, int xdirection, int ydirection){
-    
+        ArrayList<Coords> validDirection = new ArrayList<Coords>();
+        x += xdirection;
+        y += ydirection;
+        while (inBetween(x, 0, 8) && inBetween(y,0,8)) {
+            validSet.add(new Coords(x,y));
+            x += xdirection;
+            y += ydirection;
+        //WW add the portion where this can cut invalid moves from validDirection
+        }
+        return validDirection;
     }
     
+    public boolean inBetween(int num, int lower, int higher) {
+        return num >= lower && num < higher;
+    }
     public Coords getPosition(){
         return position;
     }
@@ -33,10 +45,6 @@ public class Piece extends JLabel{
     
     public int getColor(){
         return color;
-    }
-    
-    public boolean inBetween(int num, int low, int high){
-        
     }
     
     public String toString(){
