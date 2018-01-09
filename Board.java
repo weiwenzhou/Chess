@@ -50,7 +50,6 @@ public class Board extends JFrame implements MouseListener {
                 if (r == 0) {
                     if (c == 0 || c == 7) {
                         token = new Rook(r, c, 0);
-                        System.out.println("YES");
                     }
                     if (c == 1 || c == 6) {
                         token = new Knight(r, c, 0);
@@ -130,7 +129,22 @@ public class Board extends JFrame implements MouseListener {
         System.out.println(l.getPosition());
         System.out.println(l.getClass());
         
-        
+        // if not selected and is a piece --> run
+        // 2 equals not a tile. 0 = black, 1 = white
+        if (!selected && l.getColor() != 2) {
+            // changes the border of the piece pressed
+            l.setBorder(current);
+            // highlights the places where the piece can go to
+            highlight(l);
+            // is selected after
+            selected = true;
+        } else {
+            
+            
+            // not selected after and clears border colors
+            clearColor();
+            selected = false;
+        }
     }
     
     public void mouseEntered(MouseEvent e) {
@@ -149,6 +163,10 @@ public class Board extends JFrame implements MouseListener {
         
     }
     
+    private void highlight (Piece piece) {
+        
+    }
+    
     private void movePiece(Piece currentSpot, Piece newSpot) {
         
     }
@@ -161,7 +179,7 @@ public class Board extends JFrame implements MouseListener {
         return "";
     } 
     
-    public void clearColor() {
+    private void clearColor() {
         
     }
     
