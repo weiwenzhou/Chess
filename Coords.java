@@ -15,7 +15,7 @@ public class Coords{
     }
 
     public String toString(){
-        return "(" + getX() + " ," + getY() ")";
+        return "(" + getX() + " ," + getY() + ")";
     }
 
     public int toID(){

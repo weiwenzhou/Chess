@@ -9,7 +9,7 @@ public class Board extends JFrame implements MouseListener {
     /**
     
     */
-    private Container pane;
+    private static Container pane;
     private Piece[][] tiles;
     private boolean selected;
     private Piece selectedPiece;
@@ -43,7 +43,7 @@ public class Board extends JFrame implements MouseListener {
         tiles = new Piece[8][8];
         for (int r = 0; r < tiles.length; r++) {
             for (int c = 0; c < tiles[r].length; c++) {
-                Piece token;
+                Piece token = new Piece(r, c, 2);
                 
                 // Black Pieces (Top Side) 
                 
@@ -97,15 +97,15 @@ public class Board extends JFrame implements MouseListener {
                 // Background color 
                 // Alternate the colors in every row.
                 // Upper left corner is white
-                if (y == 0) { 
-                    color = !color;
+                if (c == 0) { 
+                    backgroundColor = !backgroundColor;
                 }
-                if (color) {
-                    l.setBackground(Color.white);
-                    color = false;
+                if (backgroundColor) {
+                    token.setBackground(Color.white);
+                    backgroundColor = false;
                 } else {
-                    l.setBackground(Color.green);
-                    color = true;
+                    token.setBackground(Color.green);
+                    backgroundColor = true;
                 }
                 
                 // Adds the token to the Container
@@ -119,7 +119,7 @@ public class Board extends JFrame implements MouseListener {
     }
     
     public static Piece getPiece(Coords cor) {
-        return pane.getComponenet(cor.toID());
+        return (Piece) pane.getComponent(cor.toID());
     }
     
     public void mouseClicked(MouseEvent e) {

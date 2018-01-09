@@ -6,21 +6,22 @@ public class Pawn extends Piece{
     private boolean firstMove;
     
     public Pawn(int x, int y, int c) {
-        Pawn(new Coords(x, y), c);
+        this(new Coords(x, y), c);
     }
     
     public Pawn (Coords coor, int c) {
         super(coor, c);
         firstMove = true;
         if (c == 0) {
-            this.setIcon(new ImageIcon("/Icons/blackPawn.png").getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH));   
+            this.setIcon(new ImageIcon(new ImageIcon("/Icons/blackPawn.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         } else {
-            this.setIcon(new ImageIcon("/Icons/whitePawn.png").getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH));
+            this.setIcon(new ImageIcon(new ImageIcon("/Icons/whitePawn.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         }
     }
     
     public ArrayList<ArrayList<Coords>> getValidMoves() {
-        
+        ArrayList<ArrayList<Coords>> validSet = new ArrayList<ArrayList<Coords>>();
+        return validSet;
     }
     
     public void notFirst() {
@@ -36,7 +37,8 @@ public class Pawn extends Piece{
     }
     
     public ArrayList<Coords> getKillMoves() {
-        
+        ArrayList<Coords> validSet = new ArrayList<Coords>();
+        return validSet;
     }
     
     public String toString() {

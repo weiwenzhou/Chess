@@ -8,7 +8,7 @@ public class Piece extends JLabel{
     
     public Piece(int x, int y, int col){
         position = new Coords(x,y);
-        color = col;
+        color = col;      
     }
     
     public Piece(Coords coor, int col){
