@@ -11,9 +11,9 @@ public class Board extends JFrame implements MouseListener {
     */
     private static Container pane;
     private Piece[][] tiles;
-    private boolean selected;
+    private boolean selected = false;
     private Piece selectedPiece;
-    private int turn;
+    private int turn = 1;
     private ArrayList<Piece> whitePieces;
     private ArrayList<Piece> blackPieces;
     public static int height = 1024;
@@ -125,8 +125,12 @@ public class Board extends JFrame implements MouseListener {
     
     public void mouseClicked(MouseEvent e) {
         Piece l = (Piece) e.getSource();
+        
+        // Testing Code
         System.out.println(l.getPosition());
         System.out.println(l.getClass());
+        
+        
     }
     
     public void mouseEntered(MouseEvent e) {
