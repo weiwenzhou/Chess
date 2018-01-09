@@ -17,7 +17,8 @@ public class Piece extends JLabel{
     }
     
     public ArrayList<ArrayList<Coords>> getValidMoves(){
-        
+        ArrayList<ArrayList<Coords>> validSet = new ArrayList<ArrayList<Coords>>();
+        return validSet;
     }
     
     public ArrayList<Coords> getMoves(int x, int y, int xdirection, int ydirection){
