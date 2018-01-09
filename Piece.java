@@ -16,7 +16,7 @@ public class Piece extends JLabel{
         color = col;
     }
     
-    public Arraylist<ArrayList<Coords>> getValidMoves{
+    public ArrayList<ArrayList<Coords>> getValidMoves(){
         
     }
     
@@ -25,7 +25,7 @@ public class Piece extends JLabel{
         x += xdirection;
         y += ydirection;
         while (inBetween(x, 0, 8) && inBetween(y,0,8)) {
-            validSet.add(new Coords(x,y));
+            validDirection.add(new Coords(x,y));
             x += xdirection;
             y += ydirection;
         //WW add the portion where this can cut invalid moves from validDirection
