@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class King {
+public class King extends Piece{
     private boolean firstMove;
     
     public King(int x, int y, int c) {

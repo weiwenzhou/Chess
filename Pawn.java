@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Pawn {
+public class Pawn extends Piece{
     private boolean firstMove;
     
     public Pawn(int x, int y, int c) {

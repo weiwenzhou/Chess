@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Knight {
+public class Knight extends Piece{
     
     public Knight(int x, int y, int c) {
         Knight(new Coords(x, y), c);
