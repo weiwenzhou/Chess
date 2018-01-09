@@ -21,6 +21,32 @@ public class Pawn extends Piece{
     
     public ArrayList<ArrayList<Coords>> getValidMoves() {
         ArrayList<ArrayList<Coords>> validSet = new ArrayList<ArrayList<Coords>>();
+        ArrayList<Coords> forward = new ArrayList<Coords>();
+        int xcor = getPosition().getX();
+        int ycor = getPosition().getY();
+        if (firstMove) {
+            boolean notBlocked = true;
+            for (int x = 1; x <= 2 && notBlocked; x++) {
+                Coords position = new Coords(xcor + x * getDirection(), ycor);
+                Piece viewingPiece = Board.getPiece(position);
+                // if the tile in front is empty move otherwise don't 
+                if (viewingPiece.getColor() == 2 && inBetween(position)) {
+                    forward.add(position);
+                } else {
+                    notBlocked = false;
+                }
+            }
+        }
+        else {
+            Coords position = new Coords(xcor + getDirection(), ycor);
+            Piece viewingPiece = Board.getPiece(position);
+            // if the tile in front is empty move otherwise don't 
+            if (viewingPiece.getColor() == 2 && inBetween(position)) {
+                forward.add(position);
+            }
+        }
+        validSet.add(forward);
+        validSet.add(getKillMoves());
         return validSet;
     }
     
@@ -38,6 +64,20 @@ public class Pawn extends Piece{
     
     public ArrayList<Coords> getKillMoves() {
         ArrayList<Coords> validSet = new ArrayList<Coords>();
+        int xcor = getPosition().getX() + getDirection();
+        int ycor = getPosition().getY();
+        // if piece color is equal to opposite color --> add
+        Coords tileLeft = new Coords(xcor, ycor-1);
+        Piece tileLeftPiece = Board.getPiece(tileLeft);
+        if (tileLeftPiece.getColor() != getColor() && tileLeftPiece.getColor() != 2) {
+            validSet.add(tileLeft);
+        }
+        
+        Coords tileRight = new Coords(xcor, ycor+1);
+        Piece tileRightPiece = Board.getPiece(tileRight);
+        if (tileRightPiece.getColor() != getColor() && tileRightPiece.getColor() != 2) {
+            validSet.add(tileRight);
+        }
         return validSet;
     }
     
