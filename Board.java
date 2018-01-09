@@ -84,7 +84,7 @@ public class Board extends JFrame implements MouseListener {
                         token = new King(r, c, 1);
                     }
                 } else {
-                    token = new Piece(r, c, 2)
+                    token = new Piece(r, c, 2);
                 }
                 
                 tiles[r][c] = token;
@@ -118,8 +118,8 @@ public class Board extends JFrame implements MouseListener {
     
     }
     
-    public static Piece[][] getContainer() {
-        return new Piece[8][8];
+    public static Piece getPiece(Coords cor) {
+        return pane.getComponenet(cor.toID());
     }
     
     public void mouseClicked(MouseEvent e) {
