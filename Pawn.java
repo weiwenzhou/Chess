@@ -6,12 +6,14 @@ public class Pawn {
     private boolean firstMove;
     private ImageIcon[] icons;
     
-    Pawn(int, int, int) {
-        
+    Pawn(int x, int y, int c) {
+        super(x, y, c);
+        firstMove = true;
     }
     
-    Pawn (Coords, int) {
-        
+    Pawn (Coords coor, int c) {
+        super(coor, c);
+        firstMove = true;
     }
     
     public ArrayList<ArrayList<Coords>> getValidMoves() {
@@ -19,11 +21,15 @@ public class Pawn {
     }
     
     public void notFirst() {
-        
+        firstMove = false;
     }
     
     private int getDirection() {
-        
+        if (getColor() == 0) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
     
     public ArrayList<Coords> getKillMoves() {
@@ -31,7 +37,7 @@ public class Pawn {
     }
     
     public String toString() {
-        
+        return "";
     }
     
     private void setIcon() {
