@@ -128,6 +128,7 @@ public class Board extends JFrame implements MouseListener {
         // Testing Code
         System.out.println(l.getPosition());
         System.out.println(l.getClass());
+        System.out.println(l.getColor());
         
         // if not selected and is a piece --> run
         // 2 equals not a tile. 0 = black, 1 = white
@@ -140,8 +141,10 @@ public class Board extends JFrame implements MouseListener {
             selected = true;
             selectedPiece = l;
         } else {
-            
-            
+            LineBorder bor = (LineBorder) l.getBorder();
+            if (bor.getLineColor().equals(Color.blue)) {
+                movePiece(selectedPiece, l);
+            }
             // not selected after and clears border colors
             clearColor();
             selected = false;
@@ -182,8 +185,53 @@ public class Board extends JFrame implements MouseListener {
         }
     }
     
-    private void movePiece(Piece currentSpot, Piece newSpot) {
+    private void movePiece(Piece currentPiece, Piece newSpot) {
+        // fields for currentPiece
+        Coords currentPiecePosition = currentPiece.getPosition();
+        Color currentPieceBG = currentPiece.getBackground();
+        int currentIndex = currentPiecePosition.toID();
         
+        // fields for newSpot
+        Coords newSpotPosition = newSpot.getPosition();
+        Color newSpotBG = newSpot.getBackground();
+        int newIndex = newSpotPosition.toID();
+        
+        // replacement piece for the currentPiece's spot
+        Piece newPiece = new Piece(currentPiecePosition.getX(), currentPiecePosition.getY(), 2);
+        newPiece.setBackground(currentPieceBG);
+        // defaults
+        newPiece.addMouseListener(this);
+        newPiece.setBorder(standard);
+        newPiece.setOpaque(true);
+        
+        // changing background color of currentPiece to match new spot
+        currentPiece.setBackground(newSpotBG);
+        currentPiece.setPosition(newSpotPosition);
+        
+        // for pawns to not allowed to take 2 spots forward
+        if (currentPiece instanceof Pawn) {
+            Pawn currentPieceTemp = (Pawn) currentPiece;
+            currentPieceTemp.notFirst();
+        }
+        
+        // swapping
+        if (currentIndex < newIndex) {
+            pane.add(newPiece, currentIndex);
+            pane.add(currentPiece, newIndex);
+            pane.remove(newSpot);
+        } else {
+            pane.add(currentPiece, newIndex);
+            pane.remove(newSpot);
+            pane.add(newPiece, currentIndex);
+        }
+        
+        // turn base mechanic  
+        // can be swap to a boolean
+        if (turn == 1) {
+            turn = 0;
+        } else {
+            turn = 1;
+        }
     }
     
     private Piece Promotion(int x, int y, int color) {
