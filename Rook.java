@@ -13,19 +13,10 @@ public class Rook extends Piece{
         super(coor, c);
         firstMove = true;
         if (c == 0) {
-            this.setIcon(new ImageIcon(new ImageIcon("/Icons/blackRook.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
+            this.setIcon(new ImageIcon(new ImageIcon("./Icons/blackRook.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         } else {
-            this.setIcon(new ImageIcon(new ImageIcon("/Icons/whiteRook.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
+            this.setIcon(new ImageIcon(new ImageIcon("./Icons/whiteRook.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         }
-
-    public Rook(int x, int y, int col) {
-        super (x, y, col);
-        firstMove = true;
-    }
-    
-    public Rook(Coords coor, int col) {
-        super (coor, col);
-        firstMove = true;
     }
     
     public ArrayList<ArrayList<Coords>> getValidMoves() {
@@ -45,4 +36,6 @@ public class Rook extends Piece{
     }
     
     public String toString() {
+        return "";
     }
+}

@@ -11,9 +11,9 @@ public class Knight extends Piece{
     public Knight(Coords coor, int c) {
         super(coor, c);
         if (c == 0) {
-            this.setIcon(new ImageIcon(new ImageIcon("/Icons/blackKnight.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
+            this.setIcon(new ImageIcon(new ImageIcon("./Icons/blackKnight.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         } else {
-            this.setIcon(new ImageIcon(new ImageIcon("/Icons/whiteKnight.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
+            this.setIcon(new ImageIcon(new ImageIcon("./Icons/whiteKnight.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         }
     }
     

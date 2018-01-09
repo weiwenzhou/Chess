@@ -11,9 +11,9 @@ public class Bishop extends Piece{
     public Bishop(Coords coor, int c) {
         super(coor, c);
         if (c == 0) {
-            this.setIcon(new ImageIcon(new ImageIcon("/Icons/blackBishop.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
+            this.setIcon(new ImageIcon(new ImageIcon("./Icons/blackBishop.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         } else {
-            this.setIcon(new ImageIcon(new ImageIcon("/Icons/whiteBishop.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
+            this.setIcon(new ImageIcon(new ImageIcon("./Icons/whiteBishop.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         }
     }
     

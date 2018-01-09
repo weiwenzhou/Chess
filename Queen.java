@@ -11,9 +11,9 @@ public class Queen extends Piece{
     public Queen(Coords coor, int c) {
         super(coor, c);
         if (c == 0) {
-            this.setIcon(new ImageIcon(new ImageIcon("/Icons/blackQueen.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
+            this.setIcon(new ImageIcon(new ImageIcon("./Icons/blackQueen.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         } else {
-            this.setIcon(new ImageIcon(new ImageIcon("/Icons/whiteQueen.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
+            this.setIcon(new ImageIcon(new ImageIcon("./Icons/whiteQueen.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         }
     }
     

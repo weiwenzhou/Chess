@@ -13,9 +13,9 @@ public class King extends Piece{
         super(coor, c);
         firstMove = true;
         if (c == 0) {
-            this.setIcon(new ImageIcon(new ImageIcon("/Icons/blackKing.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
+            this.setIcon(new ImageIcon(new ImageIcon("./Icons/blackKing.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         } else {
-            this.setIcon(new ImageIcon(new ImageIcon("/Icons/whiteKing.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
+            this.setIcon(new ImageIcon(new ImageIcon("./Icons/whiteKing.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         }
     }
     
