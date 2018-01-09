@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Queen {
-    private boolean firstMove;
+public class Queen extends Piece{
     private ImageIcon[] icons;
+    private Coords position;
     
     public Queen(int, int, int) {
         
