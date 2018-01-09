@@ -166,7 +166,20 @@ public class Board extends JFrame implements MouseListener {
     }
     
     private void highlight (Piece piece) {
-        
+        Piece p = (Piece) piece;
+        ArrayList<ArrayList<Coords>> locations = p.getValidMoves();
+        System.out.println(locations);
+        while (locations.size() != 0) {
+            ArrayList<Coords> currentSet = locations.get(0);
+            System.out.println(currentSet);
+            locations.remove(0);
+            while (currentSet.size() != 0) {
+                Coords current = currentSet.get(0);
+                currentSet.remove(0);
+                Piece l = (Piece) pane.getComponent(current.toID());
+                l.setBorder(available);
+            }
+        }
     }
     
     private void movePiece(Piece currentSpot, Piece newSpot) {
