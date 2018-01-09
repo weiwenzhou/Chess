@@ -25,11 +25,23 @@ public class Piece extends JLabel{
         ArrayList<Coords> validDirection = new ArrayList<Coords>();
         x += xdirection;
         y += ydirection;
-        while (inBetween(x) && inBetween(y)) {
-            validDirection.add(new Coords(x,y));
+        boolean notBlocked = true;
+        while (inBetween(x) && inBetween(y) && notBlocked) {
+            Coords position = new Coords(x,y);
+            int positionColor = Board.getPiece(position).getColor();
+            if (positionColor != 2) {
+                notBlocked = false;
+                // in here  0 or 1 if opposite number add otherwise don't.
+                if (positionColor != getColor()) {
+                    validDirection.add(position);
+                }
+            } else {
+                // if 2 continue
+                validDirection.add(position);
+            }
             x += xdirection;
             y += ydirection;
-        //WW add the portion where this can cut invalid moves from validDirection
+            
         }
         return validDirection;
     }
