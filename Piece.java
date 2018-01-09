@@ -6,13 +6,13 @@ public class Piece extends JLabel{
     private int color;
     
     public Piece(int x, int y, int col){
-	position = new Coords(x,y);
-	color = col;
+        position = new Coords(x,y);
+        color = col;
     }
     
     public Piece(Coords coor, int col){
         position = coor;
-	color = col;
+        color = col;
     }
     
     public Arraylist<ArrayList<Coords>> getValidMoves{
