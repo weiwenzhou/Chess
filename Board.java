@@ -50,6 +50,7 @@ public class Board extends JFrame implements MouseListener {
                 if (r == 0) {
                     if (c == 0 || c == 7) {
                         token = new Rook(r, c, 0);
+                        System.out.println("YES");
                     }
                     if (c == 1 || c == 6) {
                         token = new Knight(r, c, 0);
@@ -123,7 +124,9 @@ public class Board extends JFrame implements MouseListener {
     }
     
     public void mouseClicked(MouseEvent e) {
-        
+        Piece l = (Piece) e.getSource();
+        System.out.println(l.getPosition());
+        System.out.println(l.getClass());
     }
     
     public void mouseEntered(MouseEvent e) {
