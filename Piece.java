@@ -34,8 +34,8 @@ public class Piece extends JLabel{
         return validDirection;
     }
     
-    public boolean inBetween(int num) {
-        return num >= 0 && num < 8;
+    public boolean inBetween(Coords pos) {
+        return (pos.getX() >= 0 && pos.getX() < 8) && (pos.getY() >= 0 && pos.getY() < 8);
     }
     public Coords getPosition(){
         return position;
