@@ -131,19 +131,21 @@ public class Board extends JFrame implements MouseListener {
         
         // if not selected and is a piece --> run
         // 2 equals not a tile. 0 = black, 1 = white
-        if (!selected && l.getColor() != 2) {
+        if (!selected && l.getColor() == turn) {
             // changes the border of the piece pressed
             l.setBorder(current);
             // highlights the places where the piece can go to
             highlight(l);
             // is selected after
             selected = true;
+            selectedPiece = l;
         } else {
             
             
             // not selected after and clears border colors
             clearColor();
             selected = false;
+            selectedPiece = null;
         }
     }
     
@@ -180,7 +182,10 @@ public class Board extends JFrame implements MouseListener {
     } 
     
     private void clearColor() {
-        
+        for (int x = 0; x < 64; x++) {
+            Piece p = (Piece) pane.getComponent(x);
+            p.setBorder(standard);
+        }
     }
     
     public static void main(String[] args) {
