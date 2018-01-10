@@ -169,18 +169,14 @@ public class Board extends JFrame implements MouseListener {
     }
     
     private void highlight (Piece piece) {
-        ArrayList<ArrayList<Coords>> locations = piece.getValidMoves();
+        ArrayList<Coords> locations = piece.getValidMoves();
         System.out.println(locations);
         while (locations.size() != 0) {
-            ArrayList<Coords> currentSet = locations.get(0);
-            System.out.println(currentSet);
+            Coords current = locations.get(0);
+            System.out.println(current);
             locations.remove(0);
-            while (currentSet.size() != 0) {
-                Coords current = currentSet.get(0);
-                currentSet.remove(0);
-                Piece l = (Piece) pane.getComponent(current.toID());
-                l.setBorder(available);
-            }
+            Piece l = (Piece) pane.getComponent(current.toID());
+            l.setBorder(available);
         }
     }
     
@@ -261,7 +257,7 @@ public class Board extends JFrame implements MouseListener {
         //checking for Check
         if (check(currentPiece)){
             // check in King has validMoves -> if not checkmate
-            //ArrayList<ArrayList<Coords>> locations = 
+            //ArrayList<Coords> locations = 
             System.out.println("Check!");
         }
     }
@@ -300,21 +296,16 @@ public class Board extends JFrame implements MouseListener {
     }
     
     private Boolean check(Piece currentPiece){
-        
-        ArrayList<ArrayList<Coords>> locations = currentPiece.getValidMoves();
+        ArrayList<Coords> locations = currentPiece.getValidMoves();
         System.out.println(locations);
         while (locations.size() != 0) {
-            ArrayList<Coords> currentSet = locations.get(0);
-            System.out.println(currentSet);
+            Coords current = locations.get(0);
+            System.out.println(current);
             locations.remove(0);
-            while (currentSet.size() != 0) {
-                Coords current = currentSet.get(0);
-                currentSet.remove(0);
-                Piece l = (Piece) pane.getComponent(current.toID());
-                if (l instanceof King && l.getColor() != currentPiece.getColor()) {
+            Piece l = (Piece) pane.getComponent(current.toID());
+            if (l instanceof King && l.getColor() != currentPiece.getColor()) {
                     //l.setStatus(true);
                     return true;
-                }
             }
         }
         return false;
