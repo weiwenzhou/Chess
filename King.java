@@ -60,19 +60,29 @@ public class King extends Piece{
                 validSetMoves.add(currentPosition);
             }
         }
+        ArrayList<Coords> verified;
         if (checked) {
-            validSetMoves = verifyMoves(validSetMoves);
+            verified = verifyMoves(validSetMoves);
+        } else {
+            verified = validSetMoves;
         }
-        validSet.addAll(validSetMoves);
+        validSet.addAll(verified);
         return validSet;
     }
     
     private ArrayList<Coords> verifyMoves(ArrayList<Coords> moveSet) {
         ArrayList<Coords> verifyMoves = new ArrayList<Coords>();
         ArrayList<Coords> oppononentMoves = Board.getColorMoves(getColor());
+        System.out.println(moveSet);
+        System.out.println(oppononentMoves);
         for (int x = 0; x < moveSet.size(); x++) {
             Coords movePosition = moveSet.get(x);
-            if (!oppononentMoves.contains(movePosition)) {
+            boolean test = oppononentMoves.contains(movePosition);
+            int test1 = oppononentMoves.indexOf(movePosition);
+            System.out.println(""+test+getColor()+test1);
+            Coords why = oppononentMoves.get(19);
+            System.out.println(""+why + why.equals(movePosition));
+            if (test) {
                 verifyMoves.add(movePosition);
             }
         }
@@ -81,6 +91,7 @@ public class King extends Piece{
     
     public void setStatus(boolean status) {
         checked = status;
+        System.out.println(status);
     }
     
     public void notFirst() {
