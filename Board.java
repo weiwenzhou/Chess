@@ -282,6 +282,26 @@ public class Board extends JFrame implements MouseListener {
         }
     }
     
+    private Boolean check(Piece currentPiece){
+        ArrayList<ArrayList<Coords>> currentMoves = currentPiece.getValidMoves();
+        System.out.println(currentMoves);
+        while (currentMoves.size() != 0) {
+            ArrayList<Coords> currentSet = currentMoves.get(0);
+            System.out.println(currentSet);
+            currentSet.remove(0);
+            while (currentSet.size() != 0) {
+                Coords current = currentSet.get(0);
+                currentSet.remove(0);
+                Piece p = getPiece(current);
+                if (p instanceof King){
+                    System.out.println("Check by" + p);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+        
     public String toString() {
         return "";
     } 
