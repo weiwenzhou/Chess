@@ -247,6 +247,11 @@ public class Board extends JFrame implements MouseListener {
         } else {
             turn = 1;
         }
+        
+        //checking for Check
+        if (currentPiece.check()){
+            System.out.println("Check!")
+        }
     }
     
     private Piece promotion(Coords cor, int color) {
