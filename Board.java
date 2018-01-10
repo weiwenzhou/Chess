@@ -141,9 +141,9 @@ public class Board extends JFrame implements MouseListener {
         ArrayList<Piece> viewingCollection;
         ArrayList<Coords> oppononentMoves = new ArrayList<Coords>();
         if (color == 0) {
-            viewingCollection = blackPieces;
-        } else {
             viewingCollection = whitePieces;
+        } else {
+            viewingCollection = blackPieces;
         }
         for (int x = 0; x < viewingCollection.size(); x++) {
             Piece viewingPiece = (Piece) viewingCollection.get(x);
