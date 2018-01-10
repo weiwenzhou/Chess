@@ -249,9 +249,9 @@ public class Board extends JFrame implements MouseListener {
         }
         
         //checking for Check
-        if (check(currentPiece)){
-            System.out.println("Check!");
-        }
+//        if (check(currentPiece)){
+//            System.out.println("Check!");
+//        }
     }
     
     private Piece promotion(Coords cor, int color) {
@@ -287,7 +287,8 @@ public class Board extends JFrame implements MouseListener {
         }
     }
     
-    private Boolean check(Piece currentPiece){
+    private Boolean check(Piece piece){
+        Piece currentPiece = (Piece) piece;
         ArrayList<ArrayList<Coords>> currentMoves = currentPiece.getValidMoves();
         System.out.println(currentMoves);
         while (currentMoves.size() != 0) {
@@ -297,7 +298,7 @@ public class Board extends JFrame implements MouseListener {
             while (currentSet.size() != 0) {
                 Coords current = currentSet.get(0);
                 currentSet.remove(0);
-                Piece p = getPiece(current);
+                Piece p = (Piece) pane.getComponent(current.toID());
                 if (p instanceof King){
                     System.out.println("Check by" + p);
                     return true;
