@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class King extends Piece{
     private boolean firstMove;
+    private boolean checked;
     
     public King(int x, int y, int c) {
         this(new Coords(x, y), c);
@@ -12,6 +13,7 @@ public class King extends Piece{
     public King(Coords coor, int c) {
         super(coor, c);
         firstMove = true;
+        checked = false;
         if (c == 0) {
             this.setIcon(new ImageIcon(new ImageIcon("./Icons/blackKing.png").getImage().getScaledInstance(Board.width/8,Board.height/8, Image.SCALE_SMOOTH)));
         } else {
@@ -58,8 +60,27 @@ public class King extends Piece{
                 validSetMoves.add(currentPosition);
             }
         }
+        if (checked) {
+            validSetMoves = verifyMoves(validSetMoves);
+        }
         validSet.addAll(validSetMoves);
         return validSet;
+    }
+    
+    private ArrayList<Coords> verifyMoves(ArrayList<Coords> moveSet) {
+        ArrayList<Coords> verifyMoves = new ArrayList<Coords>();
+        ArrayList<Coords> oppononentMoves = Board.getColorMoves(getColor());
+        for (int x = 0; x < moveSet.size(); x++) {
+            Coords movePosition = moveSet.get(x);
+            if (!oppononentMoves.contains(movePosition)) {
+                verifyMoves.add(movePosition);
+            }
+        }
+        return verifyMoves;
+    }
+    
+    public void setStatus(boolean status) {
+        checked = status;
     }
     
     public void notFirst() {
