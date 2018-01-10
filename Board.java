@@ -169,8 +169,7 @@ public class Board extends JFrame implements MouseListener {
     }
     
     private void highlight (Piece piece) {
-        Piece p = (Piece) piece;
-        ArrayList<ArrayList<Coords>> locations = p.getValidMoves();
+        ArrayList<ArrayList<Coords>> locations = piece.getValidMoves();
         System.out.println(locations);
         while (locations.size() != 0) {
             ArrayList<Coords> currentSet = locations.get(0);
@@ -249,9 +248,9 @@ public class Board extends JFrame implements MouseListener {
         }
         
         //checking for Check
-//        if (check(currentPiece)){
-//            System.out.println("Check!");
-//        }
+        if (check(currentPiece)){
+            System.out.println("Check!");
+        }
     }
     
     private Piece promotion(Coords cor, int color) {
@@ -287,20 +286,19 @@ public class Board extends JFrame implements MouseListener {
         }
     }
     
-    private Boolean check(Piece piece){
-        Piece currentPiece = (Piece) piece;
-        ArrayList<ArrayList<Coords>> currentMoves = currentPiece.getValidMoves();
-        System.out.println(currentMoves);
-        while (currentMoves.size() != 0) {
-            ArrayList<Coords> currentSet = currentMoves.get(0);
+    private Boolean check(Piece currentPiece){
+        
+        ArrayList<ArrayList<Coords>> locations = currentPiece.getValidMoves();
+        System.out.println(locations);
+        while (locations.size() != 0) {
+            ArrayList<Coords> currentSet = locations.get(0);
             System.out.println(currentSet);
-            currentSet.remove(0);
+            locations.remove(0);
             while (currentSet.size() != 0) {
                 Coords current = currentSet.get(0);
                 currentSet.remove(0);
-                Piece p = (Piece) pane.getComponent(current.toID());
-                if (p instanceof King){
-                    System.out.println("Check by" + p);
+                Piece l = (Piece) pane.getComponent(current.toID());
+                if (l instanceof King) {
                     return true;
                 }
             }
