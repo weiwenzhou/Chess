@@ -19,8 +19,8 @@ public class King extends Piece{
         }
     }
     
-    public ArrayList<ArrayList<Coords>> getValidMoves() {
-        ArrayList<ArrayList<Coords>> validSet = new ArrayList<ArrayList<Coords>>();
+    public ArrayList<Coords> getValidMoves() {
+        ArrayList<Coords> validSet = new ArrayList<Coords>();
         ArrayList<Coords> validSetMoves = new ArrayList<Coords>();
         int xcor = getPosition().getX();
         int ycor = getPosition().getY();
@@ -58,7 +58,7 @@ public class King extends Piece{
                 validSetMoves.add(currentPosition);
             }
         }
-        validSet.add(validSetMoves);
+        validSet.addAll(validSetMoves);
         return validSet;
     }
     
@@ -69,5 +69,5 @@ public class King extends Piece{
     public String toString() {
         return "";
     }
-    
+
 }

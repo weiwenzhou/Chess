@@ -260,6 +260,8 @@ public class Board extends JFrame implements MouseListener {
         
         //checking for Check
         if (check(currentPiece)){
+            // check in King has validMoves -> if not checkmate
+            //ArrayList<ArrayList<Coords>> locations = 
             System.out.println("Check!");
         }
     }
@@ -309,7 +311,8 @@ public class Board extends JFrame implements MouseListener {
                 Coords current = currentSet.get(0);
                 currentSet.remove(0);
                 Piece l = (Piece) pane.getComponent(current.toID());
-                if (l instanceof King) {
+                if (l instanceof King && l.getColor() != currentPiece.getColor()) {
+                    //l.setStatus(true);
                     return true;
                 }
             }

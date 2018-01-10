@@ -19,8 +19,8 @@ public class Pawn extends Piece{
         }
     }
     
-    public ArrayList<ArrayList<Coords>> getValidMoves() {
-        ArrayList<ArrayList<Coords>> validSet = new ArrayList<ArrayList<Coords>>();
+    public ArrayList<Coords> getValidMoves() {
+        ArrayList<Coords> validSet = new ArrayList<Coords>();
         ArrayList<Coords> forward = new ArrayList<Coords>();
         int xcor = getPosition().getX();
         int ycor = getPosition().getY();
@@ -45,8 +45,8 @@ public class Pawn extends Piece{
                 forward.add(position);
             }
         }
-        validSet.add(forward);
-        validSet.add(getKillMoves());
+        validSet.addAll(forward);
+        validSet.addAll(getKillMoves());
         return validSet;
     }
     

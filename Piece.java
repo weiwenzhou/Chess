@@ -16,8 +16,8 @@ public class Piece extends JLabel{
         color = col;
     }
     
-    public ArrayList<ArrayList<Coords>> getValidMoves(){
-        ArrayList<ArrayList<Coords>> validSet = new ArrayList<ArrayList<Coords>>();
+    public ArrayList<Coords> getValidMoves(){
+        ArrayList<Coords> validSet = new ArrayList<Coords>();
         return validSet;
     }
     
