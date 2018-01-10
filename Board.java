@@ -304,7 +304,6 @@ public class Board extends JFrame implements MouseListener {
             } else {
                 System.out.println("Check!");
             }
-            System.out.println(locations);
         }
     }
     
