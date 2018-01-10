@@ -185,6 +185,17 @@ public class Board extends JFrame implements MouseListener {
     }
     
     private void movePiece(Piece currentPiece, Piece newSpot) {
+        
+        // losing the game
+        if (newSpot instanceof King) {
+            String message;
+            if (newSpot.getColor() == 0) {
+                message = "White Wins!";
+            } else {
+                message = "Black Wins!";
+            }
+            JOptionPane.showMessageDialog(this, message, "Game is finished!",JOptionPane.INFORMATION_MESSAGE);
+        }
         // fields for currentPiece
         Coords currentPiecePosition = currentPiece.getPosition();
         Color currentPieceBG = currentPiece.getBackground();
