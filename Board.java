@@ -249,8 +249,8 @@ public class Board extends JFrame implements MouseListener {
         }
         
         //checking for Check
-        if (currentPiece.check()){
-            System.out.println("Check!")
+        if (check(currentPiece)){
+            System.out.println("Check!");
         }
     }
     
