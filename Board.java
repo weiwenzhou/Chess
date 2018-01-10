@@ -14,8 +14,9 @@ public class Board extends JFrame implements MouseListener {
     private boolean selected = false;
     private Piece selectedPiece;
     private int turn = 1;
-    private ArrayList<Piece> whitePieces;
-    private ArrayList<Piece> blackPieces;
+    private static ArrayList<Piece> whitePieces;
+    private static ArrayList<Piece> blackPieces;
+    private King bKing, wKing;
     public static int height = 1024;
     public static int width = 1024;
     public static Border standard = new LineBorder(Color.black);
@@ -39,6 +40,10 @@ public class Board extends JFrame implements MouseListener {
             true = white
             false = black
         */
+        // initialize collection of pieces by color
+        blackPieces = new ArrayList<Piece>();
+        whitePieces = new ArrayList<Piece>();
+        
         boolean backgroundColor = false; 
         tiles = new Piece[8][8];
         for (int r = 0; r < tiles.length; r++) {
@@ -62,11 +67,18 @@ public class Board extends JFrame implements MouseListener {
                     } 
                     if (c == 4) {
                         token = new King(r, c, 0);
+                        bKing = (King) token;
                     }
+                    // add to blackPiece collection
+                    blackPieces.add(token);
                 } else if (r == 1) {
                     token = new Pawn(r, c, 0);
+                    // add to blackPiece collection
+                    blackPieces.add(token);
                 } else if (r == 6) {
                     token = new Pawn(r, c, 1);
+                    // add to whitePiece collection
+                    whitePieces.add(token);
                 } else if (r == 7) {
                     if (c == 0 || c == 7) {
                         token = new Rook(r, c, 1);
@@ -82,7 +94,10 @@ public class Board extends JFrame implements MouseListener {
                     } 
                     if (c == 4) {
                         token = new King(r, c, 1);
+                        wKing = (King) token;
                     }
+                    // add to whitePiece collection
+                    whitePieces.add(token);
                 } else {
                     token = new Piece(r, c, 2);
                 }
@@ -120,6 +135,21 @@ public class Board extends JFrame implements MouseListener {
     
     public static Piece getPiece(Coords cor) {
         return (Piece) pane.getComponent(cor.toID());
+    }
+    
+    public static ArrayList<Coords> getColorMoves(int color) {
+        ArrayList<Piece> viewingCollection;
+        ArrayList<Coords> oppononentMoves = new ArrayList<Coords>();
+        if (color == 0) {
+            viewingCollection = blackPieces;
+        } else {
+            viewingCollection = whitePieces;
+        }
+        for (int x = 0; x < viewingCollection.size(); x++) {
+            Piece viewingPiece = (Piece) viewingCollection.get(x);
+            oppononentMoves.addAll(viewingPiece.getValidMoves());
+        }
+        return oppononentMoves;
     }
     
     public void mouseClicked(MouseEvent e) {
@@ -246,6 +276,12 @@ public class Board extends JFrame implements MouseListener {
             }
         }
         
+        // king leaves check if he moves
+        if (currentPiece instanceof King) {
+            King currentPieceTempKing = (King) currentPiece;
+            currentPieceTempKing.setStatus(false);
+        }
+        
         // turn base mechanic  
         // can be swap to a boolean
         if (turn == 1) {
@@ -257,8 +293,17 @@ public class Board extends JFrame implements MouseListener {
         //checking for Check
         if (check(currentPiece)){
             // check in King has validMoves -> if not checkmate
-            //ArrayList<Coords> locations = 
-            System.out.println("Check!");
+            ArrayList<Coords> locations;
+            if (currentPiece.getColor() == 0) {
+                locations = wKing.getValidMoves();
+            } else {
+                locations = bKing.getValidMoves();
+            }
+            if (locations.size() == 0) {
+                System.out.println("Checkmate");
+            } else {
+                System.out.println("Check!");
+            }
         }
     }
     
@@ -304,7 +349,8 @@ public class Board extends JFrame implements MouseListener {
             locations.remove(0);
             Piece l = (Piece) pane.getComponent(current.toID());
             if (l instanceof King && l.getColor() != currentPiece.getColor()) {
-                    //l.setStatus(true);
+                    King tempKing = (King) l;
+                    tempKing.setStatus(true);
                     return true;
             }
         }
