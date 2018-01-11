@@ -26,5 +26,7 @@ public class Coords{
         return getX() == other.getX() && getY() == other.getY();
     }
     
-    
+    public boolean equals(Object other) {
+        return other != null && (other instanceof Coords) && equals((Coords) other);
+    }
 }
