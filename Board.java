@@ -16,7 +16,7 @@ public class Board extends JFrame implements MouseListener {
     private int turn = 1;
     private static ArrayList<Piece> whitePieces;
     private static ArrayList<Piece> blackPieces;
-    private King bKing, wKing;
+    private King[] kings;
     public static int height = 1024;
     public static int width = 1024;
     public static Border standard = new LineBorder(Color.black);
@@ -44,6 +44,9 @@ public class Board extends JFrame implements MouseListener {
         blackPieces = new ArrayList<Piece>();
         whitePieces = new ArrayList<Piece>();
         
+        // initialize the array of kings
+        kings = new King[2];
+        
         boolean backgroundColor = false; 
         tiles = new Piece[8][8];
         for (int r = 0; r < tiles.length; r++) {
@@ -67,7 +70,7 @@ public class Board extends JFrame implements MouseListener {
                     } 
                     if (c == 4) {
                         token = new King(r, c, 0);
-                        bKing = (King) token;
+                        kings[0] = (King) token;
                     }
                     // add to blackPiece collection
                     blackPieces.add(token);
@@ -94,7 +97,7 @@ public class Board extends JFrame implements MouseListener {
                     } 
                     if (c == 4) {
                         token = new King(r, c, 1);
-                        wKing = (King) token;
+                        kings[1] = (King) token;
                     }
                     // add to whitePiece collection
                     whitePieces.add(token);
@@ -295,9 +298,9 @@ public class Board extends JFrame implements MouseListener {
             // check in King has validMoves -> if not checkmate
             ArrayList<Coords> locations;
             if (currentPiece.getColor() == 0) {
-                locations = wKing.getValidMoves();
+                locations = kings[1].getValidMoves();
             } else {
-                locations = bKing.getValidMoves();
+                locations = kings[0].getValidMoves();
             }
             if (locations.size() == 0) {
                 System.out.println("Checkmate");
