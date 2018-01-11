@@ -38,6 +38,8 @@ public class Save{
     public static void main(String[]args){
         createFile("STUFF.txt");
         writeToFile("STUFF.txt", "a,b,c");
+        writeToFile("STUFF.txt", "a,b,c");
+        writeToFile("STUFF.txt", "a,b,c");
     }
     
 }

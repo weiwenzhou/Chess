@@ -4,7 +4,7 @@ import java.io.*; //file, filenotfoundexception
 public class Load{
     //private String[] fileContents;
     
-    public ArrayList<String> read (String fileName){
+    public static ArrayList<String> read (String fileName){
         ArrayList<String> fileContents = new ArrayList<String>();
         try{
             File f = new File (fileName);
@@ -20,5 +20,9 @@ public class Load{
             System.exit(1);
         }
         return fileContents;
+    }
+    
+    public static void main(String[] args){
+        System.out.println(read("STUFF.txt"));
     }
 }
