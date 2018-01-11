@@ -25,4 +25,6 @@ public class Coords{
     public boolean equals(Coords other){
         return getX() == other.getX() && getY() == other.getY();
     }
+    
+    
 }

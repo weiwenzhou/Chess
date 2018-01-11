@@ -73,16 +73,13 @@ public class King extends Piece{
     private ArrayList<Coords> verifyMoves(ArrayList<Coords> moveSet) {
         ArrayList<Coords> verifyMoves = new ArrayList<Coords>();
         ArrayList<Coords> oppononentMoves = Board.getColorMoves(getColor());
+        String sOpponentMoves = "" + oppononentMoves;
         System.out.println(moveSet);
         System.out.println(oppononentMoves);
         for (int x = 0; x < moveSet.size(); x++) {
             Coords movePosition = moveSet.get(x);
-            boolean test = oppononentMoves.contains(movePosition);
-            int test1 = oppononentMoves.indexOf(movePosition);
-            System.out.println(""+test+getColor()+test1);
-            Coords why = oppononentMoves.get(19);
-            System.out.println(""+why + why.equals(movePosition));
-            if (test) {
+            String sMovePosition = "" + movePosition;
+            if (!sOpponentMoves.contains(sMovePosition)) {
                 verifyMoves.add(movePosition);
             }
         }

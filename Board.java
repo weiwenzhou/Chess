@@ -356,7 +356,7 @@ public class Board extends JFrame implements MouseListener {
         }
         return false;
     }
-        
+    
     public String toString() {
         return "";
     } 
