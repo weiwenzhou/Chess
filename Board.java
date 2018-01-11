@@ -165,7 +165,12 @@ public class Board extends JFrame implements MouseListener {
         
         // if not selected and is a piece --> run
         // 2 equals not a tile. 0 = black, 1 = white
-        if (!selected && l.getColor() == turn) {
+        // if opposite color king .getStatus = true --> then l must be the King.
+        boolean isKing = true;
+        if (kings[turn].getStatus()) {
+            isKing = l instanceof King;
+        }
+        if (!selected && l.getColor() == turn && isKing) {
             // changes the border of the piece pressed
             l.setBorder(current);
             // highlights the places where the piece can go to
@@ -214,17 +219,6 @@ public class Board extends JFrame implements MouseListener {
     }
     
     private void movePiece(Piece currentPiece, Piece newSpot) {
-        
-        // losing the game
-        if (newSpot instanceof King) {
-            String message;
-            if (newSpot.getColor() == 0) {
-                message = "White Wins!";
-            } else {
-                message = "Black Wins!";
-            }
-            JOptionPane.showMessageDialog(this, message, "Game is finished!",JOptionPane.INFORMATION_MESSAGE);
-        }
         // fields for currentPiece
         Coords currentPiecePosition = currentPiece.getPosition();
         Color currentPieceBG = currentPiece.getBackground();
@@ -297,13 +291,22 @@ public class Board extends JFrame implements MouseListener {
         if (check(currentPiece)){
             // check in King has validMoves -> if not checkmate
             ArrayList<Coords> locations;
+            King viewingKing;
             if (currentPiece.getColor() == 0) {
-                locations = kings[1].getValidMoves();
+                viewingKing = kings[1];
             } else {
-                locations = kings[0].getValidMoves();
+                viewingKing = kings[0];
             }
+            locations = viewingKing.getValidMoves();
+            // checkmate
             if (locations.size() == 0) {
-                System.out.println("Checkmate");
+                String message;
+                if (viewingKing.getColor() == 0) {
+                    message = "White Wins!";
+                } else {
+                    message = "Black Wins!";
+                }
+                JOptionPane.showMessageDialog(this, message, "Game is finished!",JOptionPane.INFORMATION_MESSAGE);
             } else {
                 System.out.println("Check!");
             }
