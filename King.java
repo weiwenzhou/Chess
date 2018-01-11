@@ -91,6 +91,10 @@ public class King extends Piece{
         System.out.println(status);
     }
     
+    public boolean getStatus() {
+        return checked;
+    }
+    
     public void notFirst() {
         firstMove = false;
     }
