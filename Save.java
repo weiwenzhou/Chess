@@ -9,7 +9,7 @@ public class Save{
     private String wordsToAdd;
     
 
-    public void createFile(String file){  //thanks http://www.baeldung.com/java-write-to-file
+    public static void createFile(String file){  //thanks http://www.baeldung.com/java-write-to-file
         try{
             String str = "";
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -22,7 +22,7 @@ public class Save{
         }
     }
     
-    public void writeToFile(String file, String wordsToAdd){
+    public static void writeToFile(String file, String wordsToAdd){
         try{
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
             writer.append(wordsToAdd);
@@ -35,5 +35,9 @@ public class Save{
         }
     }
     
+    public static void main(String[]args){
+        createFile("STUFF.txt");
+        writeToFile("STUFF.txt", "a,b,c");
+    }
     
 }
