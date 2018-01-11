@@ -16,7 +16,7 @@ public class Board extends JFrame implements MouseListener {
     private int turn = 1;
     private static ArrayList<Piece> whitePieces;
     private static ArrayList<Piece> blackPieces;
-    private King bKing, wKing;
+    private King[] kings;
     public static int height = 1024;
     public static int width = 1024;
     public static Border standard = new LineBorder(Color.black);
@@ -44,6 +44,9 @@ public class Board extends JFrame implements MouseListener {
         blackPieces = new ArrayList<Piece>();
         whitePieces = new ArrayList<Piece>();
         
+        // initialize the array of kings
+        kings = new King[2];
+        
         boolean backgroundColor = false; 
         tiles = new Piece[8][8];
         for (int r = 0; r < tiles.length; r++) {
@@ -67,7 +70,7 @@ public class Board extends JFrame implements MouseListener {
                     } 
                     if (c == 4) {
                         token = new King(r, c, 0);
-                        bKing = (King) token;
+                        kings[0] = (King) token;
                     }
                     // add to blackPiece collection
                     blackPieces.add(token);
@@ -94,7 +97,7 @@ public class Board extends JFrame implements MouseListener {
                     } 
                     if (c == 4) {
                         token = new King(r, c, 1);
-                        wKing = (King) token;
+                        kings[1] = (King) token;
                     }
                     // add to whitePiece collection
                     whitePieces.add(token);
@@ -162,7 +165,12 @@ public class Board extends JFrame implements MouseListener {
         
         // if not selected and is a piece --> run
         // 2 equals not a tile. 0 = black, 1 = white
-        if (!selected && l.getColor() == turn) {
+        // if opposite color king .getStatus = true --> then l must be the King.
+        boolean isKing = true;
+        if (kings[turn].getStatus()) {
+            isKing = l instanceof King;
+        }
+        if (!selected && l.getColor() == turn && isKing) {
             // changes the border of the piece pressed
             l.setBorder(current);
             // highlights the places where the piece can go to
@@ -211,17 +219,6 @@ public class Board extends JFrame implements MouseListener {
     }
     
     private void movePiece(Piece currentPiece, Piece newSpot) {
-        
-        // losing the game
-        if (newSpot instanceof King) {
-            String message;
-            if (newSpot.getColor() == 0) {
-                message = "White Wins!";
-            } else {
-                message = "Black Wins!";
-            }
-            JOptionPane.showMessageDialog(this, message, "Game is finished!",JOptionPane.INFORMATION_MESSAGE);
-        }
         // fields for currentPiece
         Coords currentPiecePosition = currentPiece.getPosition();
         Color currentPieceBG = currentPiece.getBackground();
@@ -294,13 +291,22 @@ public class Board extends JFrame implements MouseListener {
         if (check(currentPiece)){
             // check in King has validMoves -> if not checkmate
             ArrayList<Coords> locations;
+            King viewingKing;
             if (currentPiece.getColor() == 0) {
-                locations = wKing.getValidMoves();
+                viewingKing = kings[1];
             } else {
-                locations = bKing.getValidMoves();
+                viewingKing = kings[0];
             }
+            locations = viewingKing.getValidMoves();
+            // checkmate
             if (locations.size() == 0) {
-                System.out.println("Checkmate");
+                String message;
+                if (viewingKing.getColor() == 0) {
+                    message = "White Wins!";
+                } else {
+                    message = "Black Wins!";
+                }
+                JOptionPane.showMessageDialog(this, message, "Game is finished!",JOptionPane.INFORMATION_MESSAGE);
             } else {
                 System.out.println("Check!");
             }
