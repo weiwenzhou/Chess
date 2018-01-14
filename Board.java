@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import java.util.ArrayList;
 
-public class Board extends JFrame implements MouseListener {
+public class Board extends JPanel implements MouseListener {
     
     /**
     
@@ -25,13 +25,7 @@ public class Board extends JFrame implements MouseListener {
     
     Board() {
         
-        this.setTitle("Chess");
-        this.setSize(width,height);
-        this.setLocation(100,100);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
-        
-        pane = this.getContentPane();
+        pane = this;
         
         pane.setLayout(new GridLayout(8,8));
         
