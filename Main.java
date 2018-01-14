@@ -24,11 +24,13 @@ public class Main extends JFrame {
         board = new Board();
         topBar = makeTopBar();
         numberBar = makeNumberBar();
+        playerBar = new PlayerBar();
         
         // Adding sections
         pane.add(board, BorderLayout.CENTER);
         pane.add(topBar, BorderLayout.PAGE_START);
         pane.add(numberBar, BorderLayout.LINE_START);
+        pane.add(playerBar, BorderLayout.LINE_END);
         
         pack();
     }
@@ -87,6 +89,7 @@ public class Main extends JFrame {
         
         return numberBar;
     }
+    
     
     public static void main(String[] args) {
         Main test = new Main();
