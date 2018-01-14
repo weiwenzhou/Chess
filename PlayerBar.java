@@ -18,7 +18,7 @@ public class PlayerBar extends JPanel implements ActionListener{
         playerCountdown.start();
         
         // Inital Time
-        int timeSet = 2;
+        int timeSet = 1;
         String initalTime = ":00";
         if (timeSet < 10) {
             initalTime = "0" + timeSet + initalTime;
@@ -51,7 +51,7 @@ public class PlayerBar extends JPanel implements ActionListener{
         whiteName.setBorder(Board.standard);
         whiteName.setFont(Main.fontStyle);
         
-        JLabel whiteTimer = new JLabel(initalTime, JLabel.CENTER);
+        JLabel whiteTimer = new JLabel("00:05", JLabel.CENTER);
         whiteTimer.setBorder(Board.standard);
         whiteTimer.setFont(Main.fontStyle);
         
@@ -71,6 +71,7 @@ public class PlayerBar extends JPanel implements ActionListener{
         if (sec <= 1) {
             if (min == 0) {
                 playerCountdown.stop();
+                Board.gameFinished(Board.getCurrentKing());
                 sec--;
             } else {
                 min--;
