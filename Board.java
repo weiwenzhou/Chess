@@ -213,6 +213,11 @@ public class Board extends JPanel implements MouseListener {
     }
     
     private void movePiece(Piece currentPiece, Piece newSpot) {
+        // King is taken
+        if (newSpot instanceof King) {
+            gameFinished((King) newSpot);
+        }
+        
         // fields for currentPiece
         Coords currentPiecePosition = currentPiece.getPosition();
         Color currentPieceBG = currentPiece.getBackground();
@@ -294,13 +299,7 @@ public class Board extends JPanel implements MouseListener {
             locations = viewingKing.getValidMoves();
             // checkmate
             if (locations.size() == 0) {
-                String message;
-                if (viewingKing.getColor() == 0) {
-                    message = "White Wins!";
-                } else {
-                    message = "Black Wins!";
-                }
-                JOptionPane.showMessageDialog(this, message, "Game is finished!",JOptionPane.INFORMATION_MESSAGE);
+                gameFinished(viewingKing);
             } else {
                 System.out.println("Check!");
             }
@@ -364,6 +363,16 @@ public class Board extends JPanel implements MouseListener {
     public String toString() {
         return "";
     } 
+    
+    public static void gameFinished(King viewingKing) {
+        String message;
+        if (viewingKing.getColor() == 0) {
+            message = "White Wins!";
+        } else {
+            message = "Black Wins!";
+        }
+        JOptionPane.showMessageDialog(null, message, "Game is finished!",JOptionPane.INFORMATION_MESSAGE);
+    }
     
     private void clearColor() {
         for (int x = 0; x < 64; x++) {
