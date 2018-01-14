@@ -377,9 +377,9 @@ public class Board extends JPanel implements MouseListener {
     public static King getCurrentKing() {
         King currentKing;
         if (turn == 0) {
-            currentKing = kings[1];
-        } else {
             currentKing = kings[0];
+        } else {
+            currentKing = kings[1];
         }
         return currentKing;
     }
