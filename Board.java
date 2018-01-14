@@ -23,8 +23,10 @@ public class Board extends JFrame implements MouseListener {
     public static Border current = new LineBorder(Color.red, 5);
     public static Border available = new LineBorder(Color.blue, 5);
     
-    Board() {
-        
+    Board(int w, int h) {
+	width = w;
+	height = h;
+	
         this.setTitle("Chess");
         this.setSize(width,height);
         this.setLocation(100,100);
@@ -132,8 +134,8 @@ public class Board extends JFrame implements MouseListener {
         }
     }
     
-    Board(int h, int w) {
-    
+    Board() {
+	this(width, height);
     }
     
     public static Piece getPiece(Coords cor) {
@@ -375,7 +377,12 @@ public class Board extends JFrame implements MouseListener {
     }
     
     public static void main(String[] args) {
-        Board test = new Board();
-        test.setVisible(true);
+	Board test;
+	if (args.length == 2){
+	    test = new Board(Integer.parseInt(args[0]), Integer.parseInt(args[1])); }
+	else {
+	     test = new Board();
+	}
+	test.setVisible(true);
     }
 }
