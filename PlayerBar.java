@@ -68,10 +68,11 @@ public class PlayerBar extends JPanel implements ActionListener{
         int index = currentLabelText.indexOf(":");
         int min = Integer.parseInt(currentLabelText.substring(index-2,index));
         int sec = Integer.parseInt(currentLabelText.substring(index+1,index+3));
+        boolean timerEnd = false;
         if (sec <= 1) {
             if (min == 0) {
                 playerCountdown.stop();
-                Board.gameFinished(Board.getCurrentKing());
+                timerEnd = true;
                 sec--;
             } else {
                 min--;
@@ -95,6 +96,11 @@ public class PlayerBar extends JPanel implements ActionListener{
             newText = newText + sec;
         }
         currentLabel.setText(newText);
+        
+        // Trigger win screen 
+        if (timerEnd) {
+            Board.gameFinished(Board.getCurrentKing());
+        }
     }
     
 }
