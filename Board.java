@@ -16,7 +16,7 @@ public class Board extends JPanel implements MouseListener {
     private static int turn = 1;
     private static ArrayList<Piece> whitePieces;
     private static ArrayList<Piece> blackPieces;
-    private King[] kings;
+    private static King[] kings;
     public static int height = 1024;
     public static int width = 1024;
     public static Border standard = new LineBorder(Color.black);
@@ -372,6 +372,16 @@ public class Board extends JPanel implements MouseListener {
             message = "Black Wins!";
         }
         JOptionPane.showMessageDialog(null, message, "Game is finished!",JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public static King getCurrentKing() {
+        King currentKing;
+        if (turn == 0) {
+            currentKing = kings[1];
+        } else {
+            currentKing = kings[0];
+        }
+        return currentKing;
     }
     
     private void clearColor() {
