@@ -23,10 +23,12 @@ public class Main extends JFrame {
         // JPanel initialize
         board = new Board();
         topBar = makeTopBar();
+        numberBar = makeNumberBar();
         
         // Adding sections
         pane.add(board, BorderLayout.CENTER);
         pane.add(topBar, BorderLayout.PAGE_START);
+        pane.add(numberBar, BorderLayout.LINE_START);
         
         pack();
     }
@@ -67,6 +69,23 @@ public class Main extends JFrame {
         top.add(letterBar, BorderLayout.CENTER);
         
         return top;
+    }
+    
+    private JPanel makeNumberBar() {
+        numberBar = new JPanel(new GridLayout(8,1));
+        numberBar.setPreferredSize(new Dimension(barWidth,Board.width/8));
+        
+        for (int x = 8; x > 0; x--) {
+            JLabel token;
+            token = new JLabel(""+x, JLabel.CENTER);
+            token.setPreferredSize(new Dimension(barWidth,Board.width/8));
+            token.setFont(fontStyle);
+            
+            token.setBorder(Board.standard);
+            numberBar.add(token);
+        }
+        
+        return numberBar;
     }
     
     public static void main(String[] args) {
