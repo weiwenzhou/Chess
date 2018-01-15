@@ -46,6 +46,7 @@ public class Main extends JFrame implements ActionListener{
         
         button1.addActionListener(this);
         button2.addActionListener(this);
+        button3.addActionListener(this);
         
         testingBar.add(button1);
         testingBar.add(button2);
@@ -67,18 +68,22 @@ public class Main extends JFrame implements ActionListener{
             SaveNLoad.save(fileSave.getText(), board.compressBoard());
         }
         if (button.getText().equals("Load")) {
-            newGame();
+            newGame(fileLoad.getText());
         }
     }
     
-    public void newGame() {
+    public void newGame(String fileName) {
         pane.remove(board);
-        board = new Board();
+        board = new Board(fileName);
         pane.add(board, BorderLayout.CENTER);
         
         pane.remove(playerBar);
         playerBar = new PlayerBar();
         pane.add(playerBar, BorderLayout.LINE_END);
+    }
+    
+    public void newGame() {
+        newGame("Default.txt");
     }
     
     private JPanel makeLetterBar() {
