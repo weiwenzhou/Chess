@@ -13,7 +13,7 @@ public class Board extends JPanel implements MouseListener {
     private Piece[][] tiles;
     private boolean selected = false;
     private Piece selectedPiece;
-    private static int turn = 1;
+    private static int turn;
     private static ArrayList<Piece> whitePieces;
     private static ArrayList<Piece> blackPieces;
     private static King[] kings;
@@ -42,6 +42,9 @@ public class Board extends JPanel implements MouseListener {
         
         // initialize the array of kings
         kings = new King[2];
+        
+        // initialize turn
+        turn = 1;
         
         boolean backgroundColor = false; 
         tiles = new Piece[8][8];
