@@ -10,7 +10,7 @@ public class Board extends JPanel implements MouseListener {
     
     */
     private static Container pane;
-    private Piece[][] tiles;
+    private Piece[] tiles;
     private boolean selected = false;
     private Piece selectedPiece;
     private static int turn;
@@ -47,87 +47,39 @@ public class Board extends JPanel implements MouseListener {
         turn = 1;
         
         boolean backgroundColor = false; 
-        tiles = new Piece[8][8];
-        for (int r = 0; r < tiles.length; r++) {
-            for (int c = 0; c < tiles[r].length; c++) {
-                Piece token = new Piece(r, c, 2);
-                
-                // Black Pieces (Top Side) 
-                
-                if (r == 0) {
-                    if (c == 0 || c == 7) {
-                        token = new Rook(r, c, 0);
-                    }
-                    if (c == 1 || c == 6) {
-                        token = new Knight(r, c, 0);
-                    }
-                    if (c == 2 || c == 5) {
-                        token = new Bishop(r, c, 0);
-                    }
-                    if (c == 3) {
-                        token = new Queen(r, c, 0);
-                    } 
-                    if (c == 4) {
-                        token = new King(r, c, 0);
-                        kings[0] = (King) token;
-                    }
-                    // add to blackPiece collection
-                    blackPieces.add(token);
-                } else if (r == 1) {
-                    token = new Pawn(r, c, 0);
-                    // add to blackPiece collection
-                    blackPieces.add(token);
-                } else if (r == 6) {
-                    token = new Pawn(r, c, 1);
-                    // add to whitePiece collection
-                    whitePieces.add(token);
-                } else if (r == 7) {
-                    if (c == 0 || c == 7) {
-                        token = new Rook(r, c, 1);
-                    }
-                    if (c == 1 || c == 6) {
-                        token = new Knight(r, c, 1);
-                    }
-                    if (c == 2 || c == 5) {
-                        token = new Bishop(r, c, 1);
-                    }
-                    if (c == 3) {
-                        token = new Queen(r, c, 1);
-                    } 
-                    if (c == 4) {
-                        token = new King(r, c, 1);
-                        kings[1] = (King) token;
-                    }
-                    // add to whitePiece collection
-                    whitePieces.add(token);
-                } else {
-                    token = new Piece(r, c, 2);
-                }
-                
-                tiles[r][c] = token;
-                
-                // Piece defaults
-                token.addMouseListener(this);
-                token.setBorder(standard);
-                token.setOpaque(true);
-                
-                // Background color 
-                // Alternate the colors in every row.
-                // Upper left corner is white
-                if (c == 0) { 
-                    backgroundColor = !backgroundColor;
-                }
-                if (backgroundColor) {
-                    token.setBackground(Color.white);
-                    backgroundColor = false;
-                } else {
-                    token.setBackground(Color.green);
-                    backgroundColor = true;
-                }
-                
-                // Adds the token to the Container
-                pane.add(token);
+        tiles = SaveNLoad.load("Default.txt");
+        for (int index = 0; index < tiles.length; index++) {
+            Piece token = tiles[index];
+            
+            // Adding token to piece
+            if (token.getColor() == 0) {
+                blackPieces.add(token);
             }
+            if (token.getColor() == 1) {
+                whitePieces.add(token);
+            }
+            
+            // Piece defaults
+            token.addMouseListener(this);
+            token.setBorder(standard);
+            token.setOpaque(true);
+            
+            // Background color 
+            // Alternate the colors in every row.
+            // Upper left corner is white
+            if (index % 8 == 0) { 
+                backgroundColor = !backgroundColor;
+            }
+            if (backgroundColor) {
+                token.setBackground(Color.white);
+                backgroundColor = false;
+            } else {
+                token.setBackground(Color.green);
+                backgroundColor = true;
+            }
+            
+            // Adds the token to the Container
+            pane.add(token);
         }
     }
     
