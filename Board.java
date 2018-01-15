@@ -59,6 +59,12 @@ public class Board extends JPanel implements MouseListener {
                 whitePieces.add(token);
             }
             
+            // Adding kings
+            if (token instanceof King) {
+                System.out.println("KING");
+                kings[token.getColor()] = (King) token;
+            }
+            
             // Piece defaults
             token.addMouseListener(this);
             token.setBorder(standard);
@@ -80,7 +86,9 @@ public class Board extends JPanel implements MouseListener {
             
             // Adds the token to the Container
             pane.add(token);
+           
         }
+        System.out.println(this.getComponents().length);
     }
     
     Board() {
