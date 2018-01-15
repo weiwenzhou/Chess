@@ -5,7 +5,7 @@ import java.nio.file.*;
 public class SaveNLoad {
     
     public static void save(String file, String[] linesToAdd){
-        Path filePath = FileSystems.getDefault().getPath(".", file);
+        Path filePath = Paths.get(file);
         try {
             Files.deleteIfExists(filePath);
         } catch (IOException e) {
