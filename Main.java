@@ -10,6 +10,7 @@ public class Main extends JFrame implements ActionListener{
     public static int barWidth = 32;
     public static int timerWidth = 256;
     public static Font fontStyle = new Font("Comic Sans Ms", Font.BOLD, barWidth);
+    private JTextField fileSave, fileLoad;
     
     public Main() {
         // Window Dimension
@@ -37,12 +38,20 @@ public class Main extends JFrame implements ActionListener{
         JPanel testingBar = new JPanel();
         JButton button1 = new JButton("New Game");
         JButton button2 = new JButton("Save");
+        fileSave = new JTextField(20);
+        fileSave.setText("Test.txt");
+        JButton button3 = new JButton("Load");
+        fileLoad = new JTextField(20);
+        fileLoad.setText("Test.txt");
         
         button1.addActionListener(this);
         button2.addActionListener(this);
         
         testingBar.add(button1);
         testingBar.add(button2);
+        testingBar.add(fileSave);
+        testingBar.add(button3);
+        testingBar.add(fileLoad);
         
         pane.add(testingBar, BorderLayout.PAGE_END);
         
@@ -55,7 +64,10 @@ public class Main extends JFrame implements ActionListener{
             newGame();
         }
         if (button.getText().equals("Save")) {
-            SaveNLoad.save("Test.txt", board.compressBoard());
+            SaveNLoad.save(fileSave.getText(), board.compressBoard());
+        }
+        if (button.getText().equals("Load")) {
+            newGame();
         }
     }
     
