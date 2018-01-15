@@ -24,9 +24,9 @@ public class Board extends JPanel implements MouseListener {
     public static Border available = new LineBorder(Color.blue, 5);
     
 
-    Board(int w, int h) {
-        width = w;
-        height = h;
+    Board(String file) {
+        // width = w;
+        // height = h;
         
         pane = this;
         pane.setLayout(new GridLayout(8,8));
@@ -47,7 +47,7 @@ public class Board extends JPanel implements MouseListener {
         turn = 1;
         
         boolean backgroundColor = false; 
-        tiles = SaveNLoad.load("Default.txt");
+        tiles = SaveNLoad.load(file);
         for (int index = 0; index < tiles.length; index++) {
             Piece token = tiles[index];
             // Adding token to piece
@@ -86,11 +86,10 @@ public class Board extends JPanel implements MouseListener {
             pane.add(token);
            
         }
-        System.out.println(this.getComponents().length);
     }
     
     Board() {
-        this(width, height);
+        this("Default.txt");
     }
     
     public static Piece getPiece(Coords cor) {
@@ -361,12 +360,12 @@ public class Board extends JPanel implements MouseListener {
     } 
     
     public static void main(String[] args) {
-	Board test;
-	if (args.length == 2){
-	    test = new Board(Integer.parseInt(args[0]), Integer.parseInt(args[1])); }
-	else {
-	     test = new Board();
-	}
-	test.setVisible(true);
+	// Board test;
+	// if (args.length == 2){
+	    // test = new Board(Integer.parseInt(args[0]), Integer.parseInt(args[1])); }
+	// else {
+	     // test = new Board();
+	// }
+	// test.setVisible(true);
     }
 }
