@@ -2,10 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Main extends JFrame {
+public class Main extends JFrame implements ActionListener{
     
     private Container pane;
-    private JPanel numberBar, playerBar, topBar, board;
+    private JPanel numberBar, playerBar, topBar;
+    private Board board;
     public static int barWidth = 32;
     public static int timerWidth = 256;
     public static Font fontStyle = new Font("Comic Sans Ms", Font.BOLD, barWidth);
@@ -32,7 +33,40 @@ public class Main extends JFrame {
         pane.add(numberBar, BorderLayout.LINE_START);
         pane.add(playerBar, BorderLayout.LINE_END);
         
+        // Testing Bar
+        JPanel testingBar = new JPanel();
+        JButton button1 = new JButton("New Game");
+        JButton button2 = new JButton("Save");
+        
+        button1.addActionListener(this);
+        button2.addActionListener(this);
+        
+        testingBar.add(button1);
+        testingBar.add(button2);
+        
+        pane.add(testingBar, BorderLayout.PAGE_END);
+        
         pack();
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+        JButton button = (JButton) e.getSource();
+        if (button.getText().equals("New Game")) {
+            newGame();
+        }
+        if (button.getText().equals("Save")) {
+            SaveNLoad.save("Test.txt", board.compressBoard());
+        }
+    }
+    
+    public void newGame() {
+        pane.remove(board);
+        board = new Board();
+        pane.add(board, BorderLayout.CENTER);
+        
+        pane.remove(playerBar);
+        playerBar = new PlayerBar();
+        pane.add(playerBar, BorderLayout.LINE_END);
     }
     
     private JPanel makeLetterBar() {
