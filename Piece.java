@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Piece extends JLabel{
-    private ImageIcon[] icons;
     private Coords position;
     private int color;
     
@@ -67,6 +66,6 @@ public class Piece extends JLabel{
     }
     
     public String toString(){
-        return "";
+        return "Piece;" + getPosition().getX() + ";" + getPosition().getY() + ";" + getColor();
     }
 }

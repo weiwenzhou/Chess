@@ -61,7 +61,8 @@ public class Knight extends Piece{
     }
     
     public String toString() {
-        return "";
+        String returnString = super.toString();
+        return "Knight" + returnString.substring(returnString.indexOf(";")); 
     }
 
 }

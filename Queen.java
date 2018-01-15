@@ -35,7 +35,8 @@ public class Queen extends Piece{
     }
     
     public String toString() {
-        return "";
+        String returnString = super.toString();
+        return "Queen" + returnString.substring(returnString.indexOf(";"));
     }
 
 }

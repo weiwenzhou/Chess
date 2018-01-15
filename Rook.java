@@ -35,7 +35,12 @@ public class Rook extends Piece{
         firstMove = false;
     }
     
+    public boolean getFirst() {
+        return firstMove;
+    }
+    
     public String toString() {
-        return "";
+        String returnString = super.toString();
+        return "Rook" + returnString.substring(returnString.indexOf(";")) + ";" + getFirst();
     }
 }

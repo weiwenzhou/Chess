@@ -54,6 +54,10 @@ public class Pawn extends Piece{
         firstMove = false;
     }
     
+    public boolean getFirst() {
+        return firstMove;
+    }
+    
     private int getDirection() {
         if (getColor() == 0) {
             return 1;
@@ -82,7 +86,8 @@ public class Pawn extends Piece{
     }
     
     public String toString() {
-        return "";
+        String returnString = super.toString();
+        return "Pawn" + returnString.substring(returnString.indexOf(";")) + ";" + getFirst();
     }
     
 
