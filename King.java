@@ -22,11 +22,14 @@ public class King extends Piece{
     }
     
     public ArrayList<Coords> getValidMoves() {
+        System.out.println("A");
         ArrayList<Coords> validSet = new ArrayList<Coords>();
+        System.out.println("A1");
         ArrayList<Coords> validSetMoves = new ArrayList<Coords>();
+        System.out.println("A2");
         int xcor = getPosition().getX();
         int ycor = getPosition().getY();
-        
+        System.out.println("B");
         if (inBetween(xcor-1) && inBetween(ycor-1)) {
                 validSetMoves.add(new Coords(xcor - 1,ycor - 1));
         }
@@ -52,8 +55,9 @@ public class King extends Piece{
                 validSetMoves.add(new Coords(xcor + 1,ycor + 1));
         }
         
+        System.out.println("C");
         // verification of positions
-        for (int x = 0; x < 8; x++) {
+        while (validSetMoves.size() != 0){
             Coords currentPosition = validSetMoves.get(0);
             validSetMoves.remove(0);
             if (Board.getPiece(currentPosition).getColor() != getColor()) {
