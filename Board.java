@@ -158,6 +158,7 @@ public class Board extends JPanel implements MouseListener {
         System.out.println(l.getPosition());
         System.out.println(l.getClass());
         System.out.println(l.getColor());
+        System.out.println(l);
         
         // if not selected and is a piece --> run
         // 2 equals not a tile. 0 = black, 1 = white
@@ -362,10 +363,6 @@ public class Board extends JPanel implements MouseListener {
         return turn;
     }
     
-    public String toString() {
-        return "";
-    } 
-    
     public static void gameFinished(King viewingKing) {
         String message;
         if (viewingKing.getColor() == 0) {
@@ -392,6 +389,15 @@ public class Board extends JPanel implements MouseListener {
             p.setBorder(standard);
         }
     }
+    
+    public String[] compressBoard() {
+        String[] packBoard = new String[64];
+        for (int x = 0; x < 64; x++) {
+            Piece currentPiece = (Piece) pane.getComponent(x);
+            packBoard[x] = currentPiece.toString();
+        }
+        return packBoard;
+    } 
     
     public static void main(String[] args) {
 	Board test;
