@@ -2,7 +2,7 @@ Rook;0;0;0;true
 Knight;0;1;0
 Bishop;0;2;0
 Queen;0;3;0
-Rook;0;4;0;true;false
+King;0;4;0;true;false
 Bishop;0;5;0
 Knight;0;6;0
 Rook;0;7;0;true
@@ -58,7 +58,7 @@ Rook;7;0;1;true
 Knight;7;1;1
 Bishop;7;2;1
 Queen;7;3;1
-Rook;7;4;1;true;false
+King;7;4;1;true;false
 Bishop;7;5;1
 Knight;7;6;1
 Rook;7;7;1;true

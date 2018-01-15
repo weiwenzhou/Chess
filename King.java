@@ -107,7 +107,7 @@ public class King extends Piece{
     
     public String toString() {
         String returnString = super.toString();
-        return "Rook" + returnString.substring(returnString.indexOf(";")) + ";" + getFirst() + ";" + getStatus();
+        return "King" + returnString.substring(returnString.indexOf(";")) + ";" + getFirst() + ";" + getStatus();
     }
 
 }

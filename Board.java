@@ -50,7 +50,6 @@ public class Board extends JPanel implements MouseListener {
         tiles = SaveNLoad.load("Default.txt");
         for (int index = 0; index < tiles.length; index++) {
             Piece token = tiles[index];
-            
             // Adding token to piece
             if (token.getColor() == 0) {
                 blackPieces.add(token);
@@ -61,7 +60,6 @@ public class Board extends JPanel implements MouseListener {
             
             // Adding kings
             if (token instanceof King) {
-                System.out.println("KING");
                 kings[token.getColor()] = (King) token;
             }
             
