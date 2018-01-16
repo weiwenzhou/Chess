@@ -359,6 +359,11 @@ public class Board extends JPanel implements MouseListener {
         return packBoard;
     } 
     
+    public static void setDimensionForDemo(int w, int h) {
+        width = w;
+        height = h;
+    }
+    
     public static void main(String[] args) {
 	// Board test;
 	// if (args.length == 2){

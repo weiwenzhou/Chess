@@ -5,6 +5,7 @@ import java.awt.event.*;
 public class PlayerBar extends JPanel implements ActionListener{
     private JLabel[] timerLabels;
     private Timer playerCountdown;
+    private static int timeSet = 10;    
     
     public PlayerBar() {
         this.setLayout(new GridLayout(8,1));
@@ -18,7 +19,7 @@ public class PlayerBar extends JPanel implements ActionListener{
         playerCountdown.start();
         
         // Inital Time
-        int timeSet = 10;
+        //int timeSet = 10;
         String initalTime = ":00";
         if (timeSet < 10) {
             initalTime = "0" + timeSet + initalTime;
@@ -101,6 +102,10 @@ public class PlayerBar extends JPanel implements ActionListener{
         if (timerEnd) {
             Board.gameFinished(Board.getCurrentKing());
         }
+    }
+    
+    public static void changeTimerForDemo(int x) {
+        timeSet = x;
     }
     
 }
