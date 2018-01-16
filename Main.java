@@ -35,7 +35,8 @@ public class Main extends JFrame implements ActionListener{
         pane.add(playerBar, BorderLayout.LINE_END);
         
         // Testing Bar
-        JPanel testingBar = new JPanel();
+        JPanel testingBar = new JPanel(new GridLayout());
+        testingBar.setPreferredSize(new Dimension(Board.width+barWidth+timerWidth,64));
         JButton button1 = new JButton("New Game");
         JButton button2 = new JButton("Save");
         fileSave = new JTextField(20);
