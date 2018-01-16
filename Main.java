@@ -144,14 +144,15 @@ public class Main extends JFrame implements ActionListener{
     
     
     public static void main(String[] args) {
-        Main test = new Main();
-        test.setVisible(true);
         if (args.length == 3) {
             Board.setDimensionForDemo(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
             PlayerBar.changeTimerForDemo(Integer.parseInt(args[2]));
         }
         if (args.length == 1) {
             PlayerBar.changeTimerForDemo(Integer.parseInt(args[0]));
-        }
+        }        
+        Main test = new Main();
+        test.setVisible(true);
+
     }
 }
