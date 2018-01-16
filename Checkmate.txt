@@ -11,7 +11,7 @@ Pawn;1;1;0;true
 Pawn;1;2;0;true
 Pawn;1;3;0;true
 Pawn;1;4;0;true
-Pawn;1;5;0;true
+Piece;1;5;2
 Pawn;1;6;0;true
 Pawn;1;7;0;true
 Piece;2;0;2
@@ -27,14 +27,14 @@ Piece;3;1;2
 Piece;3;2;2
 Piece;3;3;2
 Piece;3;4;2
-Piece;3;5;2
+Pawn;3;5;0;false
 Piece;3;6;2
 Piece;3;7;2
 Piece;4;0;2
 Piece;4;1;2
 Piece;4;2;2
 Piece;4;3;2
-Piece;4;4;2
+Pawn;4;4;1;false
 Piece;4;5;2
 Piece;4;6;2
 Piece;4;7;2
@@ -50,7 +50,7 @@ Pawn;6;0;1;true
 Pawn;6;1;1;true
 Pawn;6;2;1;true
 Pawn;6;3;1;true
-Pawn;6;4;1;true
+Piece;6;4;2
 Pawn;6;5;1;true
 Pawn;6;6;1;true
 Pawn;6;7;1;true

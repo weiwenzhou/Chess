@@ -48,10 +48,10 @@ Piece;5;6;2
 Piece;5;7;2
 Pawn;6;0;1;true
 Pawn;6;1;1;true
-Pawn;6;2;1;true
-Pawn;6;3;1;true
-Pawn;6;4;1;true
-Pawn;6;5;1;true
+Piece;6;2;2;
+Piece;6;3;2;
+Piece;6;4;2;
+Piece;6;5;2;
 Pawn;6;6;1;true
 Pawn;6;7;1;true
 Rook;7;0;1;true

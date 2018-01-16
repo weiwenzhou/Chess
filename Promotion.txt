@@ -5,15 +5,15 @@ Queen;0;3;0
 King;0;4;0;true;false
 Bishop;0;5;0
 Knight;0;6;0
-Rook;0;7;0;true
+Piece;0;7;2
 Pawn;1;0;0;true
 Pawn;1;1;0;true
 Pawn;1;2;0;true
 Pawn;1;3;0;true
 Pawn;1;4;0;true
 Pawn;1;5;0;true
-Pawn;1;6;0;true
-Pawn;1;7;0;true
+Piece;1;6;2
+Pawn;1;7;1;false
 Piece;2;0;2
 Piece;2;1;2
 Piece;2;2;2
@@ -52,7 +52,7 @@ Pawn;6;2;1;true
 Pawn;6;3;1;true
 Pawn;6;4;1;true
 Pawn;6;5;1;true
-Pawn;6;6;1;true
+Piece;6;6;2
 Pawn;6;7;1;true
 Rook;7;0;1;true
 Knight;7;1;1
