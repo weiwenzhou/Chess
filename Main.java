@@ -16,7 +16,7 @@ public class Main extends JFrame implements ActionListener{
         // Window Dimension
         this.setTitle("Chess");
         this.setSize(Board.width+barWidth+timerWidth,Board.height+barWidth);
-        this.setLocation(100,100);
+        this.setLocation(0,0);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         
@@ -144,6 +144,11 @@ public class Main extends JFrame implements ActionListener{
     
     
     public static void main(String[] args) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+        int screenValue = Math.min(screenHeight,screenWidth);
+        Board.setDimension(screenValue-300, screenValue-300);
         Main test = new Main();
         test.setVisible(true);
     }
