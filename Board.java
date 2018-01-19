@@ -265,13 +265,15 @@ public class Board extends JPanel implements MouseListener {
             }
             System.out.println("B");
             locations = viewingKing.getValidMoves();
-            // checkmate
-            System.out.println("C");
-            if (locations.size() == 0) {
-                gameFinished(viewingKing);
-            } else {
+           // checkmate
+            //System.out.println("C");
+            //if (locations.size() == 0) {
+            //    gameFinished(viewingKing);
+            //} else {
+                
                 System.out.println("Check!");
-            }
+                
+            //}
         }
         System.out.println("HERE3");
     }
