@@ -19,7 +19,23 @@ Click on the selected piece or an unhighlighted tile to cancel.
 
 # Features
 
-- a
+## Gameplay ##
+- Movable pieces with available moves highlighted
+- Check: you can only move your king
+- Promotion: when a pawn reaches the opposite side of the board, can be "promoted" to a selected piece
+- Castling: if both the king and a rook has not taken a move yet and there is no piece between them, they can meet in the middle of their paths and swap
+
+## GUI ##
+- Piece icons
+- Highlighting possible moves
+- Window size that is in ratio to user full screen size
+- Alternating colored tiles
+- Top bar and left bar for easy coordinate locations
+- Individual timers for each player
+- Changeable names for each player
+- "New Game" button to reset board
+- "Save" to write current piece placement into a txt file
+- "Load" to read a txt file and place pieces in saved locations
 
 # To Be Added
 
