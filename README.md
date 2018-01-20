@@ -38,6 +38,10 @@ Click on the selected piece or an unhighlighted tile to cancel.
 - "Load" to read a txt file and place pieces in saved locations
 
 # To Be Added
+- Separate buffer on the right side to show what pieces are selected, what move just happened, if check, etc.
+- Top level menu instead of bottom level buttons
+- "Help" or "Options" menu for further user customization
+- Title screen!
 
 # DevLog
 
