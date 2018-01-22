@@ -23,7 +23,6 @@ Click on the selected piece or an unhighlighted tile to cancel.
 - Movable pieces with available moves highlighted
 - Check: you can only move your king
 - Promotion: when a pawn reaches the opposite side of the board, can be "promoted" to a selected piece
-- Castling: if both the king and a rook has not taken a move yet and there is no piece between them, they can meet in the middle of their paths and swap
 
 ## GUI ##
 - Piece icons
@@ -32,16 +31,28 @@ Click on the selected piece or an unhighlighted tile to cancel.
 - Alternating colored tiles
 - Top bar and left bar for easy coordinate locations
 - Individual timers for each player
-- Changeable names for each player
-- "New Game" button to reset board
-- "Save" to write current piece placement into a txt file
-- "Load" to read a txt file and place pieces in saved locations
+- Top level menu with:
+- "Options" drop down
+1. "New Game" button to reset board
+2. "Save" to write current piece placement into a txt file
+1. "Load" to read a txt file and place pieces in saved locations
+- "Help" drop down
+1. "View Help" for brief instructions
 
 # To Be Added
 - Separate buffer on the right side to show what pieces are selected, what move just happened, if check, etc.
-- Top level menu instead of bottom level buttons
-- "Help" or "Options" menu for further user customization
 - Title screen!
+- Checkmate
+- Castling
 
-# DevLog
+# Bugs/Limitations
+- Checkmate is not functional: game ends by killing the enemy king or running out of time
+- Cancelling a save/load will close the entire window
+
+# **Testing**
+Load these files to test certain features:
+- Default.txt for the basic setup
+- Move.txt for all the piece movements
+- Check.txt for an enemy check situation
+- Promotion.txt for a pawn promotion
 
