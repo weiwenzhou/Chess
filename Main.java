@@ -19,7 +19,7 @@ public class Main extends JFrame implements ActionListener{
     private Board board;
     public static int barWidth = 32;
     public static int timerWidth = 256;
-    public static Font fontStyle = new Font("Comic Sans Ms", Font.BOLD, barWidth);
+    public static Font fontStyle = new Font("sans-serif", Font.BOLD, barWidth);
     private JTextField fileSave, fileLoad;
     
     public Main() {
@@ -146,6 +146,10 @@ public class Main extends JFrame implements ActionListener{
         newGame = new JMenuItem("New Game");
         saver = new JMenuItem("Save");
         loader = new JMenuItem("Load");
+        
+        newGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, Event.CTRL_MASK));
+        saver.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, Event.CTRL_MASK));
+        loader.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, Event.CTRL_MASK));
     
         Options.add(newGame);
         Options.add(saver);
@@ -154,6 +158,9 @@ public class Main extends JFrame implements ActionListener{
     
         //Initializing Help JMenuItems
         helper = new JMenuItem("Help");
+        
+        helper.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, Event.CTRL_MASK));
+        
         Help.add(helper);
     
         //Adding MenuListeners
@@ -166,6 +173,18 @@ public class Main extends JFrame implements ActionListener{
         //Adding Menus to MenuBar
         menuBar.add(Options);
         menuBar.add(Help);
+        
+        //Resizing and Recoloring
+        Font f = new Font("sans-serif", Font.BOLD, 20);
+        
+        menuBar.setFont(f);
+        Options.setFont(f);
+        Help.setFont(f);
+        
+        newGame.setFont(f);
+        saver.setFont(f);
+        loader.setFont(f);
+        helper.setFont(f);
         
         return menuBar;
     }
