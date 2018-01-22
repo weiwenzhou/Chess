@@ -22,7 +22,7 @@ public class FileChooser {
     
         int returnValue = jfc.showOpenDialog(null);
         
-        return jfc.getSelectedFile().getAbsolutePath();
+        return jfc.getSelectedFile().getName();
     }
     
    public static String main() {
@@ -30,9 +30,7 @@ public class FileChooser {
             return FileReturn();
         }
         catch (NullPointerException e) {
-            System.out.println("Please choose a valid file");
-            System.exit(1);
-            return "";
+            return main();
         }
     }
 }
