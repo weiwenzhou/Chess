@@ -48,6 +48,7 @@ Click on the selected piece or an unhighlighted tile to cancel.
 # Bugs/Limitations
 - Checkmate is not functional: game ends by killing the enemy king or running out of time
 - Cancelling a save/load will close the entire window
+- Saving into an existing, non-empty txt file will cause an arrow, as save overwrite as opposed to rewrites
 
 # **Testing**
 Load these files to test certain features:
