@@ -106,7 +106,13 @@ public class Board extends JPanel implements MouseListener {
         }
         for (int x = 0; x < viewingCollection.size(); x++) {
             Piece viewingPiece = (Piece) viewingCollection.get(x);
-            oppononentMoves.addAll(viewingPiece.getValidMoves());
+            if (viewingPiece instanceof Pawn) {
+                Pawn pawnPiece = (Pawn) viewingPiece;
+                oppononentMoves.addAll(pawnPiece.getKillMoves(true));
+                System.out.println("Activated"+x);
+            } else {
+                oppononentMoves.addAll(viewingPiece.getValidMoves());
+            }
         }
         return oppononentMoves;
     }
