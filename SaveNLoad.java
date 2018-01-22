@@ -29,7 +29,7 @@ public class SaveNLoad {
         Piece[] pieceCollection = new Piece[64];
         int index = 0;
         try{
-            File f = new File (fileName);
+            File f = new File ("./SaveGames/"+fileName);
             Scanner in = new Scanner (f);
             while(in.hasNext()){
                 String line = in.nextLine();
