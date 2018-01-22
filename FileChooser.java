@@ -12,7 +12,7 @@ public class FileChooser {
     //Opens JFileChooser GUI element, 
     public static String FileReturn(){
         
-        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        JFileChooser jfc = new JFileChooser(new File("./SaveGames"));
         
         //Filters inputs to only *.txt files
         jfc.setDialogTitle("Select a text file");
