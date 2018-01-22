@@ -48,30 +48,7 @@ public class Main extends JFrame implements ActionListener{
         pane.add(playerBar, BorderLayout.LINE_END);
         this.setJMenuBar(menuBar);
         
-        // Testing Bar
-        JPanel testingBar = new JPanel(new GridLayout());
-        testingBar.setPreferredSize(new Dimension(Board.width+barWidth+timerWidth,64));
-        JButton button1 = new JButton("New Game");
-        JButton button2 = new JButton("Save");
-        fileSave = new JTextField(20);
-        fileSave.setText("Test.txt");
-        JButton button3 = new JButton("Load");
-        fileLoad = new JTextField(20);
-        fileLoad.setText("Test.txt");
-        
-        button1.addActionListener(this);
-        button2.addActionListener(this);
-        button3.addActionListener(this);
-        
-        testingBar.add(button1);
-        testingBar.add(button2);
-        testingBar.add(fileSave);
-        testingBar.add(button3);
-        testingBar.add(fileLoad);
-        
-        pane.add(testingBar, BorderLayout.PAGE_END);
-        
-        pack();
+        pack(); 
     }
     
     public void actionPerformed(ActionEvent e) {
