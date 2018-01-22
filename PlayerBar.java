@@ -5,6 +5,9 @@ import java.awt.event.*;
 public class PlayerBar extends JPanel implements ActionListener{
     private static JLabel[][] playerLabels;
     private Timer playerCountdown;
+    private static int timeSet = 10;
+    private static String whitePlayerName = "White";
+    private static String blackPlayerName = "Black";
     
     public PlayerBar() {
         this.setLayout(new GridLayout(8,1));
@@ -18,7 +21,6 @@ public class PlayerBar extends JPanel implements ActionListener{
         playerCountdown.start();
         
         // Inital Time
-        int timeSet = 10;
         String initalTime = ":00";
         if (timeSet < 10) {
             initalTime = "0" + timeSet + initalTime;
@@ -27,7 +29,7 @@ public class PlayerBar extends JPanel implements ActionListener{
         }
         
         // Black: top 3 boxes
-        JLabel blackName = new JLabel("Black", JLabel.CENTER);
+        JLabel blackName = new JLabel(blackPlayerName, JLabel.CENTER);
         blackName.setBorder(Board.standard);
         blackName.setFont(Main.fontStyle);
         
@@ -56,7 +58,7 @@ public class PlayerBar extends JPanel implements ActionListener{
         JLabel whiteCheck = new JLabel("",JLabel.CENTER);
         whiteCheck.setFont(Main.fontStyle);
         
-        JLabel whiteName = new JLabel("White", JLabel.CENTER);
+        JLabel whiteName = new JLabel(whitePlayerName, JLabel.CENTER);
         whiteName.setBorder(Board.standard);
         whiteName.setFont(Main.fontStyle);
         
@@ -123,4 +125,12 @@ public class PlayerBar extends JPanel implements ActionListener{
         }
     }
     
+    public static void changeTimerStartTime(int x) {
+        timeSet = x;
+    }
+    
+    public static void setPlayerNames(String white, String black) {
+        whitePlayerName = white;
+        blackPlayerName = black;
+    }
 }

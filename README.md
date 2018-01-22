@@ -11,7 +11,12 @@ strategy game. For a more in-depth guide, please click [here](http://www.chessco
 ![GUI](Icons/GUI.png "GUI")
 
 1. Grab a friend. You're gonna need someone to play against (unless you're confident you can beat yourself!)
-2. Compile and run Main.java (javac Main.java, java Main)
+2. Compile and run Main.java. javac Main.java 
+    Possible commands to run. 
+    a. java Main [WhitePlayerName] [BlackPlayerName] [width] [height] [timer]
+    b. java Main [width] [height] [timer]
+    c. java Main [WhitePlayerName] [BlackPlayerName] 
+    d. java Main [timer]
 3. Your timer has started! Click one of your colored pieces, then click on one of the highlighted tiles to move/capture an enemy.
 Click on the selected piece or an unhighlighted tile to cancel.
 4. Play through the game. Beware, there are a bunch of additionals features, like Checkmate and Promotion, to read about below.

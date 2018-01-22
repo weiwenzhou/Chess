@@ -200,6 +200,27 @@ public class Main extends JFrame implements ActionListener{
         int screenWidth = screenSize.width;
         int screenValue = Math.min(screenHeight,screenWidth);
         Board.setDimension(screenValue-300, screenValue-300);
+        
+        try {
+            if (args.length == 5) {
+                PlayerBar.setPlayerNames(args[0],args[1]);
+                Board.setDimension(Integer.parseInt(args[2]), Integer.parseInt(args[3]));
+                PlayerBar.changeTimerStartTime(Integer.parseInt(args[4]));
+            }
+            if (args.length == 3) {
+                Board.setDimension(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+                PlayerBar.changeTimerStartTime(Integer.parseInt(args[2]));
+            }
+            if (args.length == 2) {
+                PlayerBar.setPlayerNames(args[0],args[1]);
+            }
+            if (args.length == 1) {
+                PlayerBar.changeTimerStartTime(Integer.parseInt(args[0]));
+            }        
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter only integer values");
+            System.exit(1);
+        }
         Main test = new Main();
         test.setVisible(true);
     }
