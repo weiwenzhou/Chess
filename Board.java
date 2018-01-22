@@ -317,7 +317,6 @@ public class Board extends JPanel implements MouseListener {
             locations.remove(0);
             Piece l = (Piece) pane.getComponent(current.toID());
             if (l instanceof King && l.getColor() != currentPiece.getColor()) {
-                PlayerBar.showCheck("Check");
                 King tempKing = (King) l;
                 tempKing.setStatus(true);
                 //Main.playerBar.setBlackCheck();

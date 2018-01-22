@@ -88,6 +88,11 @@ public class King extends Piece{
     }
     
     public void setStatus(boolean status) {
+        if (status) {
+            PlayerBar.showCheck("Check");
+        } else {
+            PlayerBar.showCheck("");
+        }
         checked = status;
         // System.out.println(status);
     }

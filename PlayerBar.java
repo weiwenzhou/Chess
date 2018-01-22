@@ -76,9 +76,9 @@ public class PlayerBar extends JPanel implements ActionListener{
     
     public static void showCheck(String str) {
         if (Board.getTurn() == 1) {
-            playerLabels[0][2].setText(str);
-        } else {
             playerLabels[1][2].setText(str);
+        } else {
+            playerLabels[0][2].setText(str);
         }
     }
     
