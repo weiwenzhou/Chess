@@ -66,23 +66,27 @@ public class Pawn extends Piece{
         }
     }
     
-    public ArrayList<Coords> getKillMoves() {
+    public ArrayList<Coords> getKillMoves(boolean colorMatters) {
         ArrayList<Coords> validSet = new ArrayList<Coords>();
         int xcor = getPosition().getX() + getDirection();
         int ycor = getPosition().getY();
         // if piece color is equal to opposite color --> add
         Coords tileLeft = new Coords(xcor, ycor-1);
         //Piece tileLeftPiece = Board.getPiece(tileLeft);
-        if (inBetween(tileLeft) && Board.getPiece(tileLeft).getColor() != getColor() && Board.getPiece(tileLeft).getColor() != 2) {
+        if (inBetween(tileLeft) && ( colorMatters || Board.getPiece(tileLeft).getColor() != getColor() ) && Board.getPiece(tileLeft).getColor() != 2) {
             validSet.add(tileLeft);
         }
         
         Coords tileRight = new Coords(xcor, ycor+1);
         //Piece tileRightPiece = Board.getPiece(tileRight);
-        if (inBetween(tileRight) && Board.getPiece(tileRight).getColor() != getColor() && Board.getPiece(tileRight).getColor() != 2) {
+        if (inBetween(tileRight) && ( colorMatters || Board.getPiece(tileRight).getColor() != getColor() ) && Board.getPiece(tileRight).getColor() != 2) {
             validSet.add(tileRight);
         }
         return validSet;
+    }
+    
+    public ArrayList<Coords> getKillMoves() {
+        return getKillMoves(false);
     }
     
     public String toString() {
