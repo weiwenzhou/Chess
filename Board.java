@@ -130,7 +130,8 @@ public class Board extends JPanel implements MouseListener {
         if (kings[turn].getStatus()) {
             isKing = l instanceof King;
         }
-        if (!selected && l.getColor() == turn && isKing) {
+        // && isKing in if block removed 
+        if (!selected && l.getColor() == turn ) {
             // changes the border of the piece pressed
             l.setBorder(current);
             // highlights the places where the piece can go to
@@ -240,10 +241,13 @@ public class Board extends JPanel implements MouseListener {
             }
         }
         // king leaves check if he moves
-        if (currentPiece instanceof King) {
-            King currentPieceTempKing = (King) currentPiece;
-            currentPieceTempKing.setStatus(false);
-        }
+        // if (currentPiece instanceof King) {
+            // King currentPieceTempKing = (King) currentPiece;
+            // currentPieceTempKing.setStatus(false);
+        // }
+        
+        // Assumes user will always protect from check ^^^
+        kings[getTurn()].setStatus(false);
         
         // turn base mechanic  
         // can be swap to a boolean
