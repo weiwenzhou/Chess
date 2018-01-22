@@ -57,11 +57,15 @@ public class Main extends JFrame implements ActionListener{
         }
         if (e.getActionCommand().equals("Save")){
             file = FileChooser.main();
-            SaveNLoad.save(file, board.compressBoard());
+            if (!file.equals("")) {
+                SaveNLoad.save(file, board.compressBoard());
+            }
         }
         if (e.getActionCommand().equals("Load")){
             file = FileChooser.main();
-            newGame(file);
+            if (!file.equals("")) {
+                newGame(file);
+            }
         }
         if (e.getActionCommand().equals("Help")){
             JOptionPane.showMessageDialog(null,
@@ -149,7 +153,7 @@ public class Main extends JFrame implements ActionListener{
         
         newGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, Event.CTRL_MASK));
         saver.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, Event.CTRL_MASK));
-        loader.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, Event.CTRL_MASK));
+        loader.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, Event.CTRL_MASK));
     
         Options.add(newGame);
         Options.add(saver);
