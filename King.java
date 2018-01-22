@@ -60,13 +60,16 @@ public class King extends Piece{
             }
             initialSize--;
         }
+        
+        /*
         ArrayList<Coords> verified;
         if (checked) {
             verified = verifyMoves(validSetMoves);
         } else {
             verified = validSetMoves;
         }
-        validSet.addAll(verified);
+        */
+        validSet.addAll(validSetMoves);
         return validSet;
     }
     
