@@ -38,8 +38,6 @@ public class SaveNLoad {
             }
         }catch(FileNotFoundException e){
             System.out.println("File not found: " + fileName);
-            e.printStackTrace();
-            System.exit(1);
         }
         
         return pieceCollection;

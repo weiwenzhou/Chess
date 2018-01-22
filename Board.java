@@ -6,9 +6,6 @@ import java.util.ArrayList;
 
 public class Board extends JPanel implements MouseListener {
     
-    /**
-    
-    */
     private static Container pane;
     private Piece[] tiles;
     private boolean selected = false;
@@ -109,7 +106,7 @@ public class Board extends JPanel implements MouseListener {
             if (viewingPiece instanceof Pawn) {
                 Pawn pawnPiece = (Pawn) viewingPiece;
                 oppononentMoves.addAll(pawnPiece.getKillMoves(true));
-                System.out.println("Activated"+x);
+                // System.out.println("Activated"+x);
             } else {
                 oppononentMoves.addAll(viewingPiece.getValidMoves());
             }
@@ -121,10 +118,10 @@ public class Board extends JPanel implements MouseListener {
         Piece l = (Piece) e.getSource();
         
         // Testing Code
-        System.out.println(l.getPosition());
-        System.out.println(l.getClass());
-        System.out.println(l.getColor());
-        System.out.println(l);
+        // System.out.println(l.getPosition());
+        // System.out.println(l.getClass());
+        // System.out.println(l.getColor());
+        // System.out.println(l);
         
         // if not selected and is a piece --> run
         // 2 equals not a tile. 0 = black, 1 = white
@@ -171,10 +168,10 @@ public class Board extends JPanel implements MouseListener {
     
     private void highlight (Piece piece) {
         ArrayList<Coords> locations = piece.getValidMoves();
-        System.out.println(locations);
+        // System.out.println(locations);
         while (locations.size() != 0) {
             Coords current = locations.get(0);
-            System.out.println(current);
+            // System.out.println(current);
             locations.remove(0);
             Piece l = (Piece) pane.getComponent(current.toID());
             l.setBorder(available);
@@ -235,7 +232,6 @@ public class Board extends JPanel implements MouseListener {
                 promotePiece.setBorder(standard);
                 promotePiece.setOpaque(true);
                 
-                System.out.println("HERE");
                 // Replacing currentPiece with promotePiece
                 pane.remove(currentPiece);
                 pane.add(promotePiece, newIndex);
@@ -243,7 +239,6 @@ public class Board extends JPanel implements MouseListener {
                 currentPiece = promotePiece;
             }
         }
-        System.out.println("HERE1");
         // king leaves check if he moves
         if (currentPiece instanceof King) {
             King currentPieceTempKing = (King) currentPiece;
@@ -257,19 +252,16 @@ public class Board extends JPanel implements MouseListener {
         } else {
             turn = 1;
         }
-        System.out.println("HERE2");
         //checking for Check
         if (check(currentPiece)){
             // check in King has validMoves -> if not checkmate
             ArrayList<Coords> locations;
             King viewingKing;
-            System.out.println("A");
             if (currentPiece.getColor() == 0) {
                 viewingKing = kings[1];
             } else {
                 viewingKing = kings[0];
             }
-            System.out.println("B");
             locations = viewingKing.getValidMoves();
            // checkmate
             //System.out.println("C");
@@ -277,11 +269,10 @@ public class Board extends JPanel implements MouseListener {
             //    gameFinished(viewingKing);
             //} else {
                 
-                System.out.println("Check!");
+            PlayerBar.showCheck("Check");
                 
             //}
         }
-        System.out.println("HERE3");
     }
     
     private Piece promotion(Coords cor, int color) {
@@ -319,10 +310,10 @@ public class Board extends JPanel implements MouseListener {
     
     private Boolean check(Piece currentPiece){
         ArrayList<Coords> locations = currentPiece.getValidMoves();
-        System.out.println(locations);
+        // System.out.println(locations);
         while (locations.size() != 0) {
             Coords current = locations.get(0);
-            System.out.println(current);
+            // System.out.println(current);
             locations.remove(0);
             Piece l = (Piece) pane.getComponent(current.toID());
             if (l instanceof King && l.getColor() != currentPiece.getColor()) {
@@ -333,7 +324,6 @@ public class Board extends JPanel implements MouseListener {
                 return true;
             }
         }
-        System.out.println("5");
         return false;
     }
     

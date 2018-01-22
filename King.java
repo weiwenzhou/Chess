@@ -76,8 +76,8 @@ public class King extends Piece{
     private ArrayList<Coords> verifyMoves(ArrayList<Coords> moveSet) {
         ArrayList<Coords> verifyMoves = new ArrayList<Coords>();
         ArrayList<Coords> oppononentMoves = Board.getColorMoves(getColor());
-        System.out.println(moveSet);
-        System.out.println(oppononentMoves);
+        // System.out.println(moveSet);
+        // System.out.println(oppononentMoves);
         for (int x = 0; x < moveSet.size(); x++) {
             Coords movePosition = moveSet.get(x);
             if (!oppononentMoves.contains(movePosition)) {
@@ -89,7 +89,7 @@ public class King extends Piece{
     
     public void setStatus(boolean status) {
         checked = status;
-        System.out.println(status);
+        // System.out.println(status);
     }
     
     public boolean getStatus() {
