@@ -1,11 +1,21 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javafx.stage.*;
+
+import java.io.File;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileSystemView;
 
 public class Main extends JFrame implements ActionListener{
     
     private Container pane;
     private JPanel numberBar, playerBar, topBar;
+    private JMenuBar menuBar;
+    private JMenu Options, Help;
+    private JMenuItem newGame, saver, loader, helper;
+    private String file = "Default.txt";
     private Board board;
     public static int barWidth = 32;
     public static int timerWidth = 256;
@@ -13,6 +23,8 @@ public class Main extends JFrame implements ActionListener{
     private JTextField fileSave, fileLoad;
     
     public Main() {
+        
+
         // Window Dimension
         this.setTitle("Chess");
         this.setSize(Board.width+barWidth+timerWidth,Board.height+barWidth);
@@ -27,12 +39,14 @@ public class Main extends JFrame implements ActionListener{
         topBar = makeTopBar();
         numberBar = makeNumberBar();
         playerBar = new PlayerBar();
+        menuBar = makeMenuBar();
         
         // Adding sections
         pane.add(board, BorderLayout.CENTER);
         pane.add(topBar, BorderLayout.PAGE_START);
         pane.add(numberBar, BorderLayout.LINE_START);
         pane.add(playerBar, BorderLayout.LINE_END);
+        this.setJMenuBar(menuBar);
         
         // Testing Bar
         JPanel testingBar = new JPanel(new GridLayout());
@@ -61,18 +75,22 @@ public class Main extends JFrame implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent e) {
-        JButton button = (JButton) e.getSource();
-        if (button.getText().equals("New Game")) {
+        if (e.getActionCommand().equals("New Game")){
             newGame();
         }
-        if (button.getText().equals("Save")) {
-            SaveNLoad.save(fileSave.getText(), board.compressBoard());
+        if (e.getActionCommand().equals("Save")){
+            file = FileChooser.main();
+            SaveNLoad.save(file, board.compressBoard());
         }
-        if (button.getText().equals("Load")) {
-            newGame(fileLoad.getText());
+        if (e.getActionCommand().equals("Load")){
+            file = FileChooser.main();
+            newGame(file);
+        }
+
+        if (e.getActionCommand().equals("Help")){
+        
         }
     }
-    
     public void newGame(String fileName) {
         pane.remove(board);
         board = new Board(fileName);
@@ -140,6 +158,39 @@ public class Main extends JFrame implements ActionListener{
         }
         
         return numberBar;
+    }
+    
+    private JMenuBar makeMenuBar(){
+        JMenuBar menuBar = new JMenuBar();
+        JMenu Options = new JMenu("Options");
+        JMenu Help = new JMenu("Help");
+    
+        //Initializing Options JMenuItems
+        newGame = new JMenuItem("New Game");
+        saver = new JMenuItem("Save");
+        loader = new JMenuItem("Load");
+    
+        Options.add(newGame);
+        Options.add(saver);
+        Options.add(loader);
+    
+    
+        //Initializing Help JMenuItems
+        helper = new JMenuItem("Help");
+        Help.add(helper);
+    
+        //Adding MenuListeners
+        newGame.addActionListener(this);
+        saver.addActionListener(this);
+        loader.addActionListener(this);
+    
+        helper.addActionListener(this);
+
+        //Adding Menus to MenuBar
+        menuBar.add(Options);
+        menuBar.add(Help);
+        
+        return menuBar;
     }
     
     
