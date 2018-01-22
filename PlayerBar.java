@@ -3,15 +3,15 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class PlayerBar extends JPanel implements ActionListener{
-    private JLabel[] timerLabels;
+    private static JLabel[][] playerLabels;
     private Timer playerCountdown;
     
     public PlayerBar() {
         this.setLayout(new GridLayout(8,1));
         this.setPreferredSize(new Dimension(Main.timerWidth, Board.height));
         
-        // Initialize timerLabels
-        timerLabels = new JLabel[2];
+        // Initialize playerLabels
+        playerLabels = new JLabel[2][3];
         
         // Timer for countdown
         playerCountdown = new Timer(1000, this);
@@ -26,7 +26,7 @@ public class PlayerBar extends JPanel implements ActionListener{
             initalTime = timeSet + initalTime;
         }
         
-        // Black: top 2 boxes
+        // Black: top 3 boxes
         JLabel blackName = new JLabel("Black", JLabel.CENTER);
         blackName.setBorder(Board.standard);
         blackName.setFont(Main.fontStyle);
@@ -35,18 +35,27 @@ public class PlayerBar extends JPanel implements ActionListener{
         blackTimer.setBorder(Board.standard);
         blackTimer.setFont(Main.fontStyle);
         
-        // Added timer to array
-        timerLabels[0] = blackTimer;
+        JLabel blackCheck = new JLabel("",JLabel.CENTER);
+        blackCheck.setFont(Main.fontStyle);
+        
+        // Added JLabels to array
+        playerLabels[0][0] = blackName;
+        playerLabels[0][1] = blackTimer;
+        playerLabels[0][2] = blackCheck;
         
         this.add(blackName);
         this.add(blackTimer);
+        this.add(blackCheck);
         
         // Filler Labels
-        for (int x = 0; x < 4; x++) {
+        for (int x = 0; x < 2; x++) {
             this.add(new JLabel());
         }
         
-        // White: bottom 2 boxes
+        // White: bottom 3 boxes
+        JLabel whiteCheck = new JLabel("",JLabel.CENTER);
+        whiteCheck.setFont(Main.fontStyle);
+        
         JLabel whiteName = new JLabel("White", JLabel.CENTER);
         whiteName.setBorder(Board.standard);
         whiteName.setFont(Main.fontStyle);
@@ -56,14 +65,25 @@ public class PlayerBar extends JPanel implements ActionListener{
         whiteTimer.setFont(Main.fontStyle);
         
         // Added timer to array
-        timerLabels[1] = whiteTimer;
+        playerLabels[1][0] = whiteName;
+        playerLabels[1][1] = whiteTimer;
+        playerLabels[1][2] = whiteCheck;
         
+        this.add(whiteCheck);
         this.add(whiteName);
         this.add(whiteTimer);
     }
     
+    public static void showCheck(String str) {
+        if (Board.getTurn() == 1) {
+            playerLabels[0][2].setText(str);
+        } else {
+            playerLabels[1][2].setText(str);
+        }
+    }
+    
     public void actionPerformed(ActionEvent e){
-        JLabel currentLabel = timerLabels[Board.getTurn()];
+        JLabel currentLabel = playerLabels[Board.getTurn()][1];
         String currentLabelText = currentLabel.getText();
         int index = currentLabelText.indexOf(":");
         int min = Integer.parseInt(currentLabelText.substring(index-2,index));

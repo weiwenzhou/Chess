@@ -318,26 +318,15 @@ public class Board extends JPanel implements MouseListener {
     }
     
     private Boolean check(Piece currentPiece){
-        System.out.println("1");
         ArrayList<Coords> locations = currentPiece.getValidMoves();
-        System.out.println("2");
         System.out.println(locations);
-        System.out.println("3");
         while (locations.size() != 0) {
             Coords current = locations.get(0);
             System.out.println(current);
             locations.remove(0);
             Piece l = (Piece) pane.getComponent(current.toID());
             if (l instanceof King && l.getColor() != currentPiece.getColor()) {
-                String message;
-                if (l.getColor() == 1) {
-                    message = "White is in Check!";
-                }        
-                else {
-                message = "Black is in Check!";
-                }
-                JOptionPane.showMessageDialog(null, message);
-                System.out.println("4");
+                PlayerBar.showCheck("Check");
                 King tempKing = (King) l;
                 tempKing.setStatus(true);
                 //Main.playerBar.setBlackCheck();
