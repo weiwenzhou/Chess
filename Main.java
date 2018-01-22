@@ -63,9 +63,9 @@ public class Main extends JFrame implements ActionListener{
             file = FileChooser.main();
             newGame(file);
         }
-
         if (e.getActionCommand().equals("Help")){
-        
+            JOptionPane.showMessageDialog(null,
+            "The basic goal of Chess is to capture the enemy's king. Each piece has a different set of possible \n moves that allow players to play strategically. It's no wonder Chess has become a popular worldwide \n strategy game. For a more in-depth guide, please visit www.chesscorner.com/tutorial/learn.htm .");
         }
     }
     public void newGame(String fileName) {
